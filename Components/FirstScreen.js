@@ -13,6 +13,14 @@ export default class FirstScreen extends Component {
       this.props.navigation.navigate("LoginScreen");
   }
 
+  signupClick = () =>{
+    this.props.navigation.navigate("SignUP");
+  }
+
+  guestVisitor = () => {
+    this.props.navigation.navigate("HomeScreen");
+  }
+
   render() {
     return (
       <View style = {styles.container}>
@@ -29,11 +37,11 @@ export default class FirstScreen extends Component {
                 containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
                 title="SIGNUP" 
                 buttonStyle={{ width:180, height:55, backgroundColor: '#f5f5f5', borderRadius:50, borderColor:'#3aabdf', borderWidth:2 }}  
-                onPress={() => { this.loginClick(); }}
+                onPress={() => { this.signupClick(); }}
                 titleStyle = {{fontSize:20, color:'#3aabdf'}}
             />
         </View>
-        <Text style = {{ color:'#F6921D', textDecorationLine:'underline', textDecorationColor:'#F6921D'}}>CONTINUE AS A GUEST</Text>
+        <Text style = {{ color:'#F6921D', textDecorationLine:'underline', textDecorationColor:'#F6921D'}} onPress = {()=>{this.guestVisitor();}}>CONTINUE AS A GUEST</Text>
       </View>
     );
   }

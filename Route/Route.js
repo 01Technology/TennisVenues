@@ -6,6 +6,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import SplashScreen from '../Components/SplashScreen';
 import FirstScreen from '../Components/FirstScreen';
 import LoginScreen from '../Components/LoginScreen';
+import HomeScreen from '../Components/Tabs/HomeScreen';
+import ForgotPassword from '../Components/ForgotPassword';
+import SignUP from '../Components/SignUP';
+import OTPVerification from '../Components/OTPVerification';
+import SecurityPin from '../Components/SecurityPin';
+import TouchAuth from '../Components/TouchAuth';
+
 
 const Stack = createStackNavigator();
 
@@ -15,7 +22,13 @@ export default function screen(){
             <Stack.Navigator initialRouteName= "SplashScreen">
                 <Stack.Screen name = "SplashScreen" component = {SplashScreen} options = {{headerShown:false }} />
                 <Stack.Screen name = "FirstScreen" component = {FirstScreen} options = {{headerShown:false }} /> 
-                <Stack.Screen name = "LoginScreen" component = {LoginScreen} options = {{headerShown:true, title: '' }} /> 
+                <Stack.Screen name = "LoginScreen" component = {LoginScreen} options = {{headerShown:false, title: '' }} /> 
+                <Stack.Screen name = "HomeScreen" component = {HomeScreen} options = {{headerShown:false}} />
+                <Stack.Screen name = "ForgotPassword" component = {ForgotPassword} options = {{headerShown:false}} />
+                <Stack.Screen name = "SignUP" component = {SignUP} options = {{headerShown:false}} />
+                <Stack.Screen name = "OTPVerification" component = {OTPVerification} options = {{headerShown:false}} />
+                <Stack.Screen name = "SecurityPin" component = {SecurityPin} options = {{headerShown:false}} />
+                <Stack.Screen name = "TouchAuth" component = {TouchAuth} options = {{headerShown:false}} />
             </Stack.Navigator>
         </NavigationContainer>
     );

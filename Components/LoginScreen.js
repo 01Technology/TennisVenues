@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 import {Button, Input} from 'react-native-elements';
+import { Entypo } from '@expo/vector-icons'; 
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -9,49 +10,71 @@ export default class LoginScreen extends Component {
     };
   }
 
+  backChevronPressed = () => {
+    this.props.navigation.navigate("FirstScreen");
+  }
+
+  loginClick = () => {
+    this.props.navigation.navigate("HomeScreen");
+  }
+
+  forgotPassword = () => {
+  this.props.navigation.navigate("ForgotPassword");
+  } 
+
+  
+
   render() {
     return (
       <View style = {styles.container}>
+        <Entypo name="chevron-left" size={36} color="#3aabdf" style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
         <Image source = {require('../assets/logo.png')} style = {styles.img} />
-        <View>
-          <View style = {{marginHorizontal:25}}>
-            <Input
-              placeholder='USERNAME / EMAIL'
-              inputContainerStyle ={{borderBottomColor:'#3aabdf'}}
-            />
-            <Input
-              placeholder='PASSWORD'
-              inputContainerStyle ={{borderBottomColor:'#3aabdf'}}
-            />
-          </View>
-          <View>
-            <Button 
-                containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                title="LOGIN" 
-                buttonStyle={{ width:180, height:55, backgroundColor: '#3aabdf', borderRadius:50, }} 
-                onPress={() => { this.loginClick(); }}
-                titleStyle = {{fontSize:20}}
-            />
-            <View style = {{marginTop:10}}>
-              <Text style = {{ alignSelf:'center', color:'#F6921D', textDecorationLine:'underline', textDecorationColor:'#F6921D'}}>FORGOT PASSWORD</Text>
-            </View>
-          </View>
-        </View>
+        <Input
+          placeholder='USERNAME / EMAIL'
+          inputContainerStyle ={[styles.input, {marginTop:50}]}
+        />
+        <Input
+          placeholder='PASSWORD'
+          inputContainerStyle ={styles.input}
+        />
+        <Button 
+            containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
+            title="LOGIN" 
+            buttonStyle={{marginTop:30, width:180, height:55, backgroundColor: '#3aabdf', borderRadius:50, }} 
+            onPress={() => { this.loginClick(); }}
+            titleStyle = {{fontSize:20}}
+        />
+        <Text style = {styles.text} onPress = {()=>{this.forgotPassword()}}>FORGOT PASSWORD?</Text>
       </View> 
     );
   }
 }
 
 const styles = StyleSheet.create({
+  backChevron:{
+    position:'absolute', 
+    top:35,
+    left:10
+  },
   container:{
-    flex:1, 
-    justifyContent:'space-evenly',
-    alignItems:'center'
+    flex:1,
+    justifyContent:'center',
+    alignItems: 'center',
   },
   img:{
+    alignSelf:'center',
     position:'absolute',
-    top:30,
+    top:100,
     width:290,
     height:80
+  },
+  
+  input:{
+    borderBottomColor:'#3aabdf', marginHorizontal:45, paddingLeft:10,
+  },
+  text:{ 
+    marginTop:15, 
+    alignSelf:'center', 
+    color:'#3aabdf', textDecorationLine:'underline', textDecorationColor:'#3aabdf'
   }
 })
