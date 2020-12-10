@@ -19,27 +19,31 @@ export default class SecurityPin extends React.Component{
                 <View style = {styles.boxContainer}> 
                     <Entypo name="chevron-left" size={36} color="#3aabdf" style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
                     <View>
-                        <Text style = {{alignSelf:'center'}}>CREATE SECURITY PIN</Text>
+                        <Text style = {{alignSelf:'center', marginBottom:50}}>CREATE SECURITY PIN</Text>
                     </View>
                     <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
                         <View>
                             <Input
                                 inputContainerStyle ={styles.input}
+                                keyboardType = "number-pad"
                             />
                         </View>
                         <View>
                             <Input
                                 inputContainerStyle ={styles.input}
+                                keyboardType = "number-pad"
                             />
                         </View>
                         <View>
                             <Input
                                 inputContainerStyle ={styles.input}
+                                keyboardType = "number-pad"
                             />
                         </View>
                         <View>
                             <Input
                                 inputContainerStyle ={styles.input}
+                                keyboardType = "number-pad"
                             />
                         </View>
                     </View>
@@ -60,7 +64,7 @@ export default class SecurityPin extends React.Component{
 const styles = StyleSheet.create({
   boxContainer:{ 
     flex:1,
-    justifyContent:'space-evenly',
+    justifyContent:'center',
     alignItems:'center', 
   },
   input:{
