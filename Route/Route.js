@@ -12,6 +12,9 @@ import SignUP from '../Components/SignUP';
 import OTPVerification from '../Components/OTPVerification';
 import SecurityPin from '../Components/SecurityPin';
 import TouchAuth from '../Components/TouchAuth';
+import BookTheCourt from '../Components/BookTheCourt';
+import pay from '../Components/pay';
+
 
 
 const Stack = createStackNavigator();
@@ -29,6 +32,8 @@ export default function screen(){
                 <Stack.Screen name = "OTPVerification" component = {OTPVerification} options = {{headerShown:false}} />
                 <Stack.Screen name = "SecurityPin" component = {SecurityPin} options = {{headerShown:false}} />
                 <Stack.Screen name = "TouchAuth" component = {TouchAuth} options = {{headerShown:false}} />
+                <Stack.Screen name = "BookTheCourt" component = {BookTheCourt} options = {{headerShown:false}} />
+                <Stack.Screen name = "pay" component = {pay} options = {{headerShown:false}} />
             </Stack.Navigator>
         </NavigationContainer>
     );

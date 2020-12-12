@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text, Dimensions, TouchableOpacity} from 'react-native';
 
+import colors from '../Config/colors';
+
 export default class OTPVerification extends React.Component{
     
     confirmPressed = () => {
@@ -26,13 +28,13 @@ export default class OTPVerification extends React.Component{
                         <Text style = {{ marginTop:20, fontSize:11}}>DID NOT RECEIVED CODE?</Text>
                       </View>
                       <TouchableOpacity style = {{marginTop:18}} onPress = {console.log("resend..")}>
-                        <Text style = {{ fontWeight:'bold', color:'#3aabdf'}}>
+                        <Text style = {{ fontWeight:'bold', color:colors.primary}}>
                           RESEND OTP
                         </Text>
                       </TouchableOpacity>
                   </View>
                   <TouchableOpacity onPress = {()=>{this.confirmPressed();}}>
-                    <Text style = {{textAlign:'center', fontSize:18, marginTop:20, marginBottom:10, color:'#3aabdf'}}>CONFIRM</Text>
+                    <Text style = {{textAlign:'center', fontSize:18, marginTop:20, marginBottom:10, color:colors.primary}}>CONFIRM</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -48,12 +50,12 @@ const styles = StyleSheet.create({
   },
   boxContainer:{ 
     justifyContent:'space-evenly',
-    width:Dimensions.get('window').width/1.2, height:Dimensions.get('window').width/1.5, backgroundColor:'#fff', borderRadius:24, elevation:1
+    width:Dimensions.get('window').width/1.2, height:Dimensions.get('window').width/1.5, backgroundColor:colors.white, borderRadius:24, elevation:1
   },
   text:{
     marginTop:15,
     fontWeight:'bold',
     textAlign:'center',
-    color:'#3aabdf'
+    color:colors.primary
   }
 })

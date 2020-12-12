@@ -23,7 +23,7 @@ export default class TouchAuth extends Component {
           <Image source = {require('../assets/fingerprint.png')} style = {styles.img} />
         </TouchableOpacity>
         <View style = {{marginTop:60}}>
-            <Text onPress = {()=>{this.guestVisitor();}}>USE TOUCH ID TO AUTHENTICATE</Text>
+            <Text onPress = {console.log('Use touch Id To authenticate')}>USE TOUCH ID TO AUTHENTICATE</Text>
         </View>
         <TouchableOpacity style = {{marginTop:40}}>
             <Text onPress = {()=>{this.pinSecurity();}}>USE PIN SECURITY</Text>

@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, Text } from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import { Entypo } from '@expo/vector-icons'; 
 
+import colors from '../Config/colors';
+
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style = {styles.container}>
-        <Entypo name="chevron-left" size={36} color="#3aabdf" style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
+        <Entypo name="chevron-left" size={36} color={colors.primary} style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
         <Image source = {require('../assets/logo.png')} style = {styles.img} />
         <Input
           placeholder='USERNAME / EMAIL'
@@ -40,7 +42,7 @@ export default class LoginScreen extends Component {
         <Button 
             containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
             title="LOGIN" 
-            buttonStyle={{marginTop:30, width:180, height:55, backgroundColor: '#3aabdf', borderRadius:50, }} 
+            buttonStyle={{marginTop:30, width:180, height:55, backgroundColor: colors.primary, borderRadius:50, }} 
             onPress={() => { this.loginClick(); }}
             titleStyle = {{fontSize:20}}
         />
@@ -70,11 +72,11 @@ const styles = StyleSheet.create({
   },
   
   input:{
-    borderBottomColor:'#3aabdf', marginHorizontal:45, paddingLeft:10,
+    borderBottomColor:colors.primary, marginHorizontal:45, paddingLeft:10,
   },
   text:{ 
     marginTop:15, 
     alignSelf:'center', 
-    color:'#3aabdf', textDecorationLine:'underline', textDecorationColor:'#3aabdf'
+    color:colors.primary, textDecorationLine:'underline', textDecorationColor:colors.primary
   }
 })

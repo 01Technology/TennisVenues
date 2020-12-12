@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 import {Button} from 'react-native-elements';
 
+import colors from '../Config/colors';
+
 export default class FirstScreen extends Component {
   constructor(props) {
     super(props);
@@ -29,19 +31,19 @@ export default class FirstScreen extends Component {
             <Button 
                 containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
                 title="LOGIN" 
-                buttonStyle={{ width:180, height:55, backgroundColor: '#3aabdf', borderRadius:50, }} 
+                buttonStyle={{ width:180, height:55, backgroundColor:colors.primary, borderRadius:50, }} 
                 onPress={() => { this.loginClick(); }}
                 titleStyle = {{fontSize:20}}
             />
             <Button 
                 containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
                 title="SIGNUP" 
-                buttonStyle={{ width:180, height:55, backgroundColor: '#f5f5f5', borderRadius:50, borderColor:'#3aabdf', borderWidth:2 }}  
+                buttonStyle={{ width:180, height:55, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
                 onPress={() => { this.signupClick(); }}
-                titleStyle = {{fontSize:20, color:'#3aabdf'}}
+                titleStyle = {{fontSize:20, color:colors.primary}}
             />
         </View>
-        <Text style = {{ color:'#F6921D', textDecorationLine:'underline', textDecorationColor:'#F6921D'}} onPress = {()=>{this.guestVisitor();}}>CONTINUE AS A GUEST</Text>
+        <Text style = {{ color:colors.secondary, textDecorationLine:'underline', textDecorationColor:colors.secondary}} onPress = {()=>{this.guestVisitor();}}>CONTINUE AS A GUEST</Text>
       </View>
     );
   }

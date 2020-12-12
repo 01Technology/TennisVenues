@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, Dimensions} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import { Entypo } from '@expo/vector-icons'; 
 
+import colors from '../Config/colors';
+
 export default class SecurityPin extends React.Component{
     
     confirmPressed = () => {
@@ -17,7 +19,7 @@ export default class SecurityPin extends React.Component{
     render(){
         return(
                 <View style = {styles.boxContainer}> 
-                    <Entypo name="chevron-left" size={36} color="#3aabdf" style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
+                    <Entypo name="chevron-left" size={36} color={colors.primary} style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
                     <View>
                         <Text style = {{alignSelf:'center', marginBottom:50}}>CREATE SECURITY PIN</Text>
                     </View>
@@ -51,7 +53,7 @@ export default class SecurityPin extends React.Component{
                         <Button 
                             containerStyle={{ marginTop:20, paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
                             title="CONFIRM" 
-                            buttonStyle={{alignSelf:'center',width:180,height:45, backgroundColor: '#3aabdf', borderRadius:50, }} 
+                            buttonStyle={{alignSelf:'center',width:180,height:45, backgroundColor: colors.primary, borderRadius:50, }} 
                             onPress={() => { this.confirmPressed() ; }}
                             titleStyle = {{fontSize:16, fontWeight:'100'}}
                         />
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems:'center', 
   },
   input:{
-    borderBottomColor:'#3aabdf',
+    borderBottomColor:colors.primary,
     width:50
   },
   backChevron:{

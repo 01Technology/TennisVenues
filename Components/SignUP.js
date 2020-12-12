@@ -3,6 +3,8 @@ import {View,StyleSheet, Text, Image, Alert} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import { Entypo } from '@expo/vector-icons'; 
 
+import colors from '../Config/colors';
+
 export default class Update extends React.Component{
     constructor(){
         super();
@@ -28,7 +30,7 @@ export default class Update extends React.Component{
 render(){
     return (
       <View style = {{flex:1, justifyContent:'space-evenly', marginHorizontal:22, marginTop:10}}>
-            <Entypo name="chevron-left" size={36} color="#3aabdf" style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
+            <Entypo name="chevron-left" size={36} color={colors.primary} style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
             <Image source = {require('../assets/logo.png')} style = {styles.img} />
             <View style = {{ justifyContent:'center', alignItems:'center'}}>
               <Input
@@ -61,9 +63,9 @@ render(){
               <Button 
                   containerStyle={{ paddingLeft:10, paddingRight:10 }}
                   title="SIGNUP" 
-                  buttonStyle={{ alignSelf:'center', width:180, height:55, backgroundColor: '#f5f5f5', borderRadius:50, borderColor:'#3aabdf', borderWidth:2 }}  
+                  buttonStyle={{ alignSelf:'center', width:180, height:55, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
                   onPress={() => { this.signupClicked(); }}
-                  titleStyle = {{fontSize:20, color:'#3aabdf'}}
+                  titleStyle = {{fontSize:20, color:colors.primary}}
               />
             </View> 
       </View>
@@ -85,6 +87,6 @@ const styles = StyleSheet.create({
     height:80
   },
   input:{
-    borderBottomColor:'#3aabdf', marginHorizontal:45, paddingLeft:10,
+    borderBottomColor:colors.primary, marginHorizontal:45, paddingLeft:10,
   },
 })
