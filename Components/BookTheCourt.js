@@ -20,8 +20,8 @@ export default class BookTheCourt extends React.Component{
       this.props.navigation.navigate("Promotions");
     }
 
-    payPressed = () => {
-      this.props.navigation.navigate("pay");
+    makePaymentPressed = () => {
+      this.props.navigation.navigate("MakePayment", {name:this.state.name, email:this.state.email});
     }
     render(){
         return(
@@ -185,9 +185,9 @@ export default class BookTheCourt extends React.Component{
                     </View>
                     <Button 
                         containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                        title="Pay" 
+                        title="MAKE PAYMENT" 
                         buttonStyle={{ width:100, height:35, backgroundColor: colors.primary, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                        onPress={() => {this.payPressed();}}
+                        onPress={() => {this.makePaymentPressed();}}
                         titleStyle = {{fontSize:8, color:colors.white}}
                       />
                   </View>

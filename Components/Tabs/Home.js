@@ -23,6 +23,9 @@ class MyBookings extends Component {
     this.props.navigation.navigate("BookTheCourt", {name:"Test Court Name", email:'Test Court Locatiooooooooooon'})
   }
 
+  gotoPromotions = () => {
+    this.props.navigation.navigate("Promotions");
+  }
   render() {
     return (
       <ScrollView style={{flex: 1,backgroundColor:colors.white}}>
@@ -132,7 +135,7 @@ class MyBookings extends Component {
           <TouchableOpacity>
             <Text style = {{ color:colors.primary, fontWeight:'bold', alignSelf:'flex-start', marginRight:150 }}>POPULAR VENUE</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress = {()=>{this.gotoPromotions()}}>
             <Text style = {{ color:colors.primary }}>SEE ALL</Text>
           </TouchableOpacity>
         </View>

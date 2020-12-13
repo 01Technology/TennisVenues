@@ -46,19 +46,19 @@ export default class Promotions extends Component {
   //render flatlist item
   _renderItem = ({item, index}) => {
     return(
-        <View style = {{flexDirection:'row', marginHorizontal:20, marginVertical:50}}>
+        <View style = {{flexDirection:'row', marginHorizontal:20, marginVertical:30}}>
             <View style = {{flexDirection:'row'}}>
                 <Image source = {require('../../assets/crousel1.jpg')} style = {{width:100, height:70, marginTop:8}} /> 
                 <View>
                   <Ionicons name="location" size={24} color={colors.secondary} />
                 </View>   
             </View>
-            <View style = {{width:120, height:20}}>
+            <View style = {{width:80, height:20}}>
                 <View>
-                  <Text style = {{fontSize:14, fontWeight:'bold'}}>{item.name}</Text>
+                  <Text style = {{fontSize:12, fontWeight:'bold'}}>{item.name}</Text>
                 </View>
                 <View>
-                  <Text style = {{fontSize:11}}>{item.email}</Text>
+                  <Text style = {{fontSize:8, width:'100%'}}>{item.email}</Text>
                 </View>
                 <View style = {{flexDirection:'row', marginTop:10}}>
                     <Ionicons name="tennisball-sharp" size={12} color={colors.primary} />
@@ -136,13 +136,13 @@ export default class Promotions extends Component {
         <View>
           <Text style = {{marginHorizontal:20}}>10 VENUES NEAR SUBRUB</Text>
         </View>
-        <View style = {{marginRight:20}}>
+        <View>
               <FlatList
                   data = {this.state.dataSource}
                   renderItem = {this._renderItem}
                   keyExtractor = {(item, index) => index.toString()}
                   ItemSeparatorComponent = {(props) => 
-                      <View style = {{width:"100%", height:2, backgroundColor:colors.primary, marginHorizontal:20}} />
+                      <View style = {{width:"90%", height:1, backgroundColor:colors.primary, marginHorizontal:20}} />
                     }
               />
         </View>
