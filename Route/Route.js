@@ -14,8 +14,8 @@ import SecurityPin from '../Components/SecurityPin';
 import TouchAuth from '../Components/TouchAuth';
 import BookTheCourt from '../Components/BookTheCourt';
 import pay from '../Components/pay';
-
-
+import MakePayment from '../Components/MakePayment';
+import BookingConfirmed from '../Components/BookingConfirmed';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +34,8 @@ export default function screen(){
                 <Stack.Screen name = "TouchAuth" component = {TouchAuth} options = {{headerShown:false}} />
                 <Stack.Screen name = "BookTheCourt" component = {BookTheCourt} options = {{headerShown:false}} />
                 <Stack.Screen name = "pay" component = {pay} options = {{headerShown:false}} />
+                <Stack.Screen name = "MakePayment" component = {MakePayment} options = {{headerShown:false}} />
+                <Stack.Screen name = "BookingConfirmed" component = {BookingConfirmed} options = {{headerShown:false}} />
             </Stack.Navigator>
         </NavigationContainer>
     );

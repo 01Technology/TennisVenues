@@ -4,8 +4,9 @@ import { View, Text ,StyleSheet, Image } from 'react-native';
 class SplashScreen extends Component {
     componentDidMount() {
         setTimeout(() => {
-            //this.props.navigation.replace('FirstScreen');
-            this.props.navigation.replace('HomeScreen');
+            this.props.navigation.replace('FirstScreen');
+            //this.props.navigation.replace('HomeScreen');
+            //this.props.navigation.navigate("MakePayment");
             }, 3000);    
     }
   render() {
