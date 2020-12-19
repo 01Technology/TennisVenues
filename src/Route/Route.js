@@ -3,6 +3,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+//Authentication
 import SplashScreen from '../navigations/Authentication/SplashScreen';
 import FirstScreen from '../navigations/Authentication/FirstScreen';
 import LoginScreen from '../navigations/Authentication/LoginScreen';
@@ -17,6 +18,15 @@ import BookTheCourt from '../navigations/BookTheCourt';
 import pay from '../navigations/pay';
 import MakePayment from '../navigations/MakePayment';
 import BookingConfirmed from '../navigations/BookingConfirmed';
+
+//Settings
+import Settings from '../navigations/Settings/Settings';
+import notifications from '../navigations/Settings/notifications';
+import AboutTheApp from '../navigations/Settings/AboutTheApp';
+import TermsofUse from '../navigations/Settings/TermsofUse';
+import PrivacyPolicy from '../navigations/Settings/PrivacyPolicy';
+import Feedbacks from '../navigations/Settings/Feedbacks';
+
 
 const Stack = createStackNavigator();
 
@@ -44,6 +54,13 @@ export default function screen(){
                 <Stack.Screen name = "pay" component = {pay}/>
                 <Stack.Screen name = "MakePayment" component = {MakePayment}/>
                 <Stack.Screen name = "BookingConfirmed" component = {BookingConfirmed} />
+
+                <Stack.Screen name = "Settings" component = {Settings} />
+                <Stack.Screen name = "notifications" component = {notifications} />
+                <Stack.Screen name = "AboutTheApp" component = {AboutTheApp} />
+                <Stack.Screen name = "TermsofUse" component = {TermsofUse} />
+                <Stack.Screen name = "PrivacyPolicy" component = {PrivacyPolicy} />
+                <Stack.Screen name = "Feedbacks" component = {Feedbacks} />
             </Stack.Navigator>
         </NavigationContainer>
     );
