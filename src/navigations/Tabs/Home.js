@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View, StyleSheet,ScrollView, TextInput, Image, Dimensions} from 'react-native';
-import { Avatar, Card, Button } from 'react-native-elements';
+import { View, StyleSheet,ScrollView, Image, Dimensions} from 'react-native';
+import { Avatar, Badge } from 'react-native-elements';
+
+import Header from '../../Components/Header';
+import Slider from '../../Components/Slider';
+import CardSlider from '../../Components/CardSlider';
 
 import Text from '../../Config/CustomFont';
 import colors from '../../Config/colors';
-
-import { Ionicons } from '@expo/vector-icons'; 
 
 import { Entypo } from '@expo/vector-icons'; 
 import { MaterialIcons } from '@expo/vector-icons'; 
@@ -30,35 +32,25 @@ class MyBookings extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1,backgroundColor:colors.white}}>
-        <View style = {{alignItems:'center'}}>
+        <View style = {{alignItems:'center', justifyContent:'space-between'}}>
         <View style={styles.curvedbackgroundViewStyle}>
         </View>
         <View style={styles.curvedforegroundViewStyle}>
         </View>
-        <View style = {styles.top}>
-            <View>
-                <TextInput 
-                    placeholder = "SEARCH FOR VENUES" 
-                    onChangeText = {(val) => {this.setState({email: val})}} 
-                    style = { styles.input } 
-                />
-            </View>
-            <View>
-                <Ionicons name="search" size={30} color={colors.white} />
-            </View>   
-            <View>
-                <Ionicons name="notifications" size={30} color={colors.white} />
-            </View>           
+        <View style = {{marginLeft:20, marginRight:20}}>
+          <Header />
         </View>
         <View style = {styles.userSection}>
             <View>
                 <Avatar 
                   size="large"  
-                  icon={{name: 'user', type: 'font-awesome', color:colors.avatarPlaceholder}} 
+                  icon={{name: 'user', type: 'font-awesome', color:colors.avatarPlaceholder,size:62}} 
                   rounded titleStyle ={{color:'black', fontSize:25}} 
                   onPress={() => console.log("Works!")} 
                   overlayContainerStyle={{backgroundColor: 'white'}}
                   />
+                
+                  <Badge containerStyle={{ position: 'absolute', bottom: 0, right: 4, width:20, height:20, }} value = {<Image source = {require('../../assets/Icons/PLUS-202.png')} style = {{width:20, height:20,}} />} />
             </View>
             <View>
                 <Text type = "bold" style = {{fontSize:28, color:colors.white, marginLeft:20, }}>GOOD DAY,</Text>
@@ -93,7 +85,7 @@ class MyBookings extends Component {
         <View style = {styles.matchtimerContainer}>
             <View style = {{justifyContent:'center', alignItems:'center', padding:20}}>
               <View>
-                <Text type = "black" style = {{fontSize:24, color:colors.primary}}>47 : 16</Text>
+                <Text type = "black" style = {{fontSize:30, color:colors.primary}}>47 : 16</Text>
               </View>
               <View style = {{flexDirection:'row', justifyContent:'space-between'}}>
                 <Text  type = "light" style = {{fontSize:10}}>HOURS     </Text>
@@ -118,20 +110,9 @@ class MyBookings extends Component {
               </View>
             </View>
         </View>
-        <ScrollView style={{flex: 1}} horizontal = {true} >
-            <View style = {styles.imagecarousalContainer}>
-              <Image source = {{uri:"https://images.pexels.com/photos/5067821/pexels-photo-5067821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}} style = {styles.image}/>
-            </View>
-            <View style = {styles.imagecarousalContainer}>
-              <Image source = {{uri:"https://images.pexels.com/photos/5067814/pexels-photo-5067814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}} style = {styles.image}/>
-            </View>
-            <View style = {styles.imagecarousalContainer}>
-              <Image source = {{uri:"https://images.pexels.com/photos/5067816/pexels-photo-5067816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}} style = {styles.image}/>
-            </View>
-            <View style = {styles.imagecarousalContainer}>
-              <Image source = {{uri:"https://images.pexels.com/photos/5067816/pexels-photo-5067816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}} style = {styles.image}/>
-            </View>
-        </ScrollView>
+        <View style = {styles.advertisings}>
+          <Slider />
+        </View>
         <View style = {{ flex:1, flexDirection:'row', justifyContent:'center', alignItems:'stretch', marginHorizontal:20,}}>
           <TouchableOpacity>
             <Text type = "black" style = {{ color:colors.primary, alignSelf:'flex-start', marginRight:150 }}>POPULAR VENUE</Text>
@@ -140,133 +121,10 @@ class MyBookings extends Component {
             <Text style = {{ color:colors.primary }}>SEE ALL</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView style={{flex: 1}} horizontal = {true}>
-          <Card image = {{uri:'https://images.pexels.com/photos/171568/pexels-photo-171568.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'}} >
-            <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-              <View>
-                  <Text style = {{fontWeight:'bold'}}>QUEENSLAND TENNIS CENTER</Text>
-                  <Text style = {{fontSize:12}}>190 King Arthur Terrace</Text>
-                  <Text style = {{fontSize:12}}>Tennyson, QLD</Text>
-                  <View style = {{flexDirection:'row',}}>
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-531.png')} style ={{width:20, height:20}} />
-                  </View>
-              </View>
-              <View>
-                  <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="BOOK THIS COURT" 
-                    buttonStyle={{ width:100, height:35, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => { this.BOOKTHISCOURT(); }}
-                    titleStyle = {{fontSize:8, color:colors.primary, fontFamily:'Lato-Regular'}}
-                  />
-              </View>
-            </View>
-          </Card>
-          <Card image = {{uri:'https://images.pexels.com/photos/171568/pexels-photo-171568.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'}} >
-            <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-              <View>
-                  <Text style = {{fontWeight:'bold'}}>QUEENSLAND TENNIS CENTER</Text>
-                  <Text style = {{fontSize:12}}>190 King Arthur Terrace</Text>
-                  <Text style = {{fontSize:12}}>Tennyson, QLD</Text>
-                  <View style = {{flexDirection:'row',}}>
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-531.png')} style ={{width:20, height:20}} />
-                  </View>
-              </View>
-              <View>
-                  <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="BOOK THIS COURT" 
-                    buttonStyle={{ width:100, height:35, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => { this.BOOKTHISCOURT(); }}
-                    titleStyle = {{fontSize:8, color:colors.primary, fontFamily:'Lato-Regular'}}
-                  />
-              </View>
-            </View>
-          </Card>
-          <Card image = {{uri:'https://images.pexels.com/photos/171568/pexels-photo-171568.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'}} >
-            <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-              <View>
-                  <Text style = {{fontWeight:'bold'}}>QUEENSLAND TENNIS CENTER</Text>
-                  <Text style = {{fontSize:12}}>190 King Arthur Terrace</Text>
-                  <Text style = {{fontSize:12}}>Tennyson, QLD</Text>
-                  <View style = {{flexDirection:'row',}}>
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-531.png')} style ={{width:20, height:20}} />
-                  </View>
-              </View>
-              <View>
-                  <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="BOOK THIS COURT" 
-                    buttonStyle={{ width:100, height:35, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => { this.BOOKTHISCOURT(); }}
-                    titleStyle = {{fontSize:8, color:colors.primary, fontFamily:'Lato-Regular'}}
-                  />
-              </View>
-            </View>
-          </Card>
-          <Card image = {{uri:'https://images.pexels.com/photos/171568/pexels-photo-171568.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'}} >
-            <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-              <View>
-                  <Text style = {{fontWeight:'bold'}}>QUEENSLAND TENNIS CENTER</Text>
-                  <Text style = {{fontSize:12}}>190 King Arthur Terrace</Text>
-                  <Text style = {{fontSize:12}}>Tennyson, QLD</Text>
-                  <View style = {{flexDirection:'row',}}>
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-531.png')} style ={{width:20, height:20}} />
-                  </View>
-              </View>
-              <View>
-                  <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="BOOK THIS COURT" 
-                    buttonStyle={{ width:100, height:35, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => { this.BOOKTHISCOURT(); }}
-                    titleStyle = {{fontSize:8, color:colors.primary, fontFamily:'Lato-Regular'}}
-                  />
-              </View>
-            </View>
-          </Card>
-          <Card image = {{uri:'https://images.pexels.com/photos/171568/pexels-photo-171568.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'}} >
-            <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-              <View>
-                  <Text style = {{fontWeight:'bold'}}>QUEENSLAND TENNIS CENTER</Text>
-                  <Text style = {{fontSize:12}}>190 King Arthur Terrace</Text>
-                  <Text style = {{fontSize:12}}>Tennyson, QLD</Text>
-                  <View style = {{flexDirection:'row',}}>
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-2-391.png')} style ={{width:20, height:20}} />
-                    <Image source = {require('../../assets/Icons/BALL-531.png')} style ={{width:20, height:20}} />
-                  </View>
-              </View>
-              <View>
-                  <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="BOOK THIS COURT" 
-                    buttonStyle={{ width:100, height:35, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => { this.BOOKTHISCOURT(); }}
-                    titleStyle = {{fontSize:8, color:colors.primary, fontFamily:'Lato-Regular'}}
-                  />
-              </View>
-            </View>
-          </Card>
-        </ScrollView>
+        <View>
+          <CardSlider />
+        </View>
+        
         <View style = {{marginHorizontal:20, marginVertical:20, justifyContent:'center', alignItems:'center'}}>
           <Text style = {{color:colors.primary}}>FOLLOW US ON SOCIAL MEDIA</Text>
         </View>
@@ -350,29 +208,8 @@ const styles = StyleSheet.create({
     elevation:20,
     marginHorizontal:20,
     borderRadius:15,
-    marginBottom:20,
     paddingHorizontal:30,
     paddingVertical:10
-  },
-  top:{
-    marginTop:25,
-    padding:10,
-    flexDirection:'row',
-    marginLeft:10,
-    justifyContent:'space-between',
-    alignSelf:'stretch'
-  },
-  input:{
-    borderRadius:12, 
-    borderColor: colors.black, 
-    width:250, 
-    borderWidth: 0.5,
-    height:35, 
-    paddingHorizontal:30, 
-    backgroundColor: colors.white,
-    fontSize: 18,
-    marginLeft:0,
-    fontFamily:'Lato-Regular'
   },
   userSection:{
     paddingTop:20,

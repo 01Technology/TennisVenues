@@ -27,6 +27,7 @@ import TermsofUse from '../navigations/Settings/TermsofUse';
 import PrivacyPolicy from '../navigations/Settings/PrivacyPolicy';
 import Feedbacks from '../navigations/Settings/Feedbacks';
 
+//Components
 
 const Stack = createStackNavigator();
 
