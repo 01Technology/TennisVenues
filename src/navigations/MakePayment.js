@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, Dimensions, Image, SafeAreaView, TouchableOpacity, StatusBar } from 'react-native';
 import {Input, Button} from 'react-native-elements';
 
+import ToogleImage from '../Components/ToogleImage';
 import colors from '../Config/colors';
 import { Entypo } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
@@ -10,10 +11,8 @@ class MakePayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        //name:props.route.params.name,
-        //email:props.route.params.email,
-        name:"HELLO THERE WHAT'S UP",
-        email:"Here Goes the Location or so called venue",
+        name: props.route.params.name,
+        email: props.route.params.email,
         expiryTime:'9:00'
     };
   }
@@ -27,10 +26,10 @@ class MakePayment extends Component {
   }
   render() {
     return (
-    <SafeAreaView style = {styles.Container}>
+    <SafeAreaView>
         <ScrollView>
-        <TouchableOpacity>
-                <Entypo name="chevron-left" size={36} color={colors.primary} onPress = {()=>{this.backChevronPressed()}}/>
+            <TouchableOpacity style = {styles.backChevronContainer} onPress = {this.backChevronPressed}>
+                <Entypo name="chevron-thin-left" opacity={0.7} size={30} color={colors.primary} />
             </TouchableOpacity>
             <View style = {{marginLeft:35, marginBottom:30, flexDirection:'row', justifyContent:'space-between', alignItems:'center', marginRight:Dimensions.get('window').width/2 }}>
                     <Text style={{fontSize:20, fontWeight:'bold'}} >{this.state.name}</Text>
@@ -39,14 +38,14 @@ class MakePayment extends Component {
             <View style = {{  justifyContent:'space-between', marginRight:20}}>
                 <View style = {{marginLeft:35, flexDirection:'row', justifyContent:'space-between', alignItems:'center', marginBottom:30}}>
                         <View style = {{flexDirection:'row', alignSelf:'baseline'}}>
-                            <Ionicons name="location" size={24} color={colors.secondary} style = {{marginRight:10}}/>
+                            <Image source = {require('../assets/Icons/location-048.png')} style = {{width:26, height:26, marginRight:10}} />
                             <View style = {{width:Dimensions.get('window').width/3}}>
                                 <Text style = {{fontSize:10}}>{this.state.name}</Text>
                                 <Text style = {{fontSize:10, marginRight:20}}>{this.state.email}</Text>
                             </View>
                         </View>
                         <View style = {{flexDirection:'row', alignSelf:'baseline'}}>
-                            <Ionicons name="person" size={24} color={colors.secondary} style = {{marginRight:10}}/>
+                        <Image source = {require('../assets/Icons/DETAIL-102.png')} style = {{width:26, height:26, marginRight:10}} />
                             <View style = {{width:Dimensions.get('window').width/3}}>
                                 <Text style = {{fontSize:10}}>{this.state.name}</Text>
                                 <Text style = {{fontSize:10, marginRight:20}}>{this.state.email}</Text>
@@ -55,14 +54,14 @@ class MakePayment extends Component {
                 </View>
                 <View style = {{marginLeft:35, flexDirection:'row', justifyContent:'space-between', alignItems:'center',}}>
                         <View style = {{flexDirection:'row',}}>
-                            <Ionicons name="time" size={24} color={colors.secondary} style = {{marginRight:10}}/>
+                        <Image source = {require('../assets/Icons/CLOCK-092.png')} style = {{width:26, height:26, marginRight:10}} />
                             <View style = {{width:Dimensions.get('window').width/3}}>
                                 <Text style = {{fontSize:10}}>{this.state.name}</Text>
                                 <Text style = {{fontSize:10, marginRight:20}}>{this.state.email}</Text>
                             </View>
                         </View>
                         <View style = {{flexDirection:'row',  alignSelf:"baseline" }}>
-                            <Ionicons name="md-map-sharp" size={24} color={colors.secondary} style = {{marginRight:10}} />
+                        <Image source = {require('../assets/Icons/COURT-133.png')} style = {{width:26, height:26, marginRight:10}} />
                             <View style = {{width:Dimensions.get('window').width/3}}>
                                 <Text style = {{fontSize:10}}>{this.state.name}</Text>
                                 <Text style = {{fontSize:10, marginRight:20}}>{this.state.email}</Text>
@@ -70,8 +69,8 @@ class MakePayment extends Component {
                         </View>
                 </View>
             </View>
-            <View style = {{marginLeft:35, marginVertical:20}}>
-                <Text>THIS BOOKING PAYMENT WILL EXPIRE IN  <Text style = {{fontWeight:'bold', fontSize:16}}>{this.state.expiryTime}</Text></Text>
+            <View style = {{marginLeft:35, marginVertical:30}}>
+                <Text style = {{ fontSize:11}}>THIS BOOKING PAYMENT WILL EXPIRE IN  <Text style = {{fontWeight:'bold', fontSize:16}}>{this.state.expiryTime}</Text></Text>
             </View>
             <View style = {{  marginLeft:30}}>
               <View>
@@ -79,7 +78,7 @@ class MakePayment extends Component {
                     placeholder='NAME ON CREDIT CARD'
                     inputContainerStyle ={styles.input}
                     onChangeText = { (val) => {this.setState({username:val})}}
-                    style = {{fontSize:14,}}
+                    style = {{fontSize:12,}}
                 />
               </View>
               <View>
@@ -87,7 +86,7 @@ class MakePayment extends Component {
                     placeholder='CREDIT CARD NUMBER'
                     inputContainerStyle ={styles.input}
                     onChangeText = { (val) => {this.setState({username:val})}}
-                    style = {{fontSize:14}}
+                    style = {{fontSize:12}}
                 />
               </View>
               <View style = {{ flexDirection:'row', width:70}}>
@@ -114,23 +113,22 @@ class MakePayment extends Component {
                         placeholder='SECURITY CODE'
                         inputContainerStyle ={styles.input}
                         onChangeText = { (val) => {this.setState({username:val})}}
-                        style = {{fontSize:14 }}
+                        style = {{fontSize:12 }}
                     />
                 </View>
-                <View style = {{marginLeft:10, marginBottom:40}}>    
-                    <Text> REMEMBER THIS CARD FOR FUTURE BOOKINGS</Text>
+                <View style = {{marginLeft:10, marginBottom:40, flexDirection:'row'}}>    
+                    <Text style = {{fontSize:10,marginRight:10}}> REMEMBER THIS CARD FOR FUTURE BOOKINGS</Text>
+                    <ToogleImage />
                 </View>
                 <View style = {{marginLeft:10, marginBottom:80, flexDirection:'row'}}>  
-                    <Ionicons name="lock-closed" size={24} color={colors.secondary} style = {{marginRight:10}}/>  
+                    <Ionicons name="lock-closed" size={18} color={colors.secondary} style = {{marginRight:10}}/>  
                     <View>
-                        <Text style = {{fontSize:12}}>YOUR PAYMENT IS SSECURED CARD DETAILS</Text>
-                        <Text  style = {{fontSize:12}}>WON'T BE SHARED</Text>
+                        <Text style = {{fontSize:11, width:'60%'}}>YOUR PAYMENT IS SSECURED CARD DETAILS WON'T BE SHARED</Text>
                     </View>
                 </View>
             </View>
-            
         </ScrollView>
-        <View style = {styles.footerContainer}>  
+        <View style = {{ flexDirection:'row', bottom:0, position:'absolute', alignSelf:'stretch', width:'100%', height:'8%', backgroundColor:colors.white, justifyContent:'space-between', alignItems:'center', elevation:500,paddingLeft:20}}>  
                 <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
                     <Text style = {{fontWeight:'bold', marginRight:10}}>Total</Text>
                     <Text style = {{fontSize:20, fontWeight:'600'}}>$13</Text>
@@ -151,9 +149,11 @@ class MakePayment extends Component {
 export default MakePayment;
 
 const styles = StyleSheet.create({
-    Container:{ 
+    backChevronContainer:{
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    },
+        left:20,
+        marginBottom:30,
+      },
     footerContainer:{
         //position:'absolute',
         flexDirection:'row', 

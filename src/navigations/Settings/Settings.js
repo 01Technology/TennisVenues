@@ -32,7 +32,7 @@ class Settings extends Component {
   }
 
   Logout = () => {
-      this.props.navigation.navigate("FirstScreen");
+      this.props.navigation.navigate("Logout");
   }
 
   render() {

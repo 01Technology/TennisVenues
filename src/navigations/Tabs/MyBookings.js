@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TextInput, Image, Dimensions, TouchableOpacity, FlatList, ScrollView, ViewPropTypes} from 'react-native';
+import { View, StyleSheet, TextInput, Image, Dimensions, TouchableOpacity, FlatList, ScrollView,} from 'react-native';
 import { Avatar, Card, Button,  } from 'react-native-elements';
 
 import Text from '../../Config/CustomFont';

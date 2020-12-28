@@ -15,7 +15,7 @@ import Promotions from './Tabs/Promotions';
 
 export default function HomeScreen(){
   return(
-    <Tabs.Navigator initialRouteName = "Home" tabBarOptions={{ activeTintColor:'#3aabdf' }}>
+    <Tabs.Navigator initialRouteName = "Home" tabBarOptions={{ activeTintColor:colors.secondary }}>
       <Tabs.Screen name = "Home" component = {Home} options={{
             tabBarLabel: "HOME",
             tabBarIcon: ({size,focused}) => {

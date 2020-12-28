@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../Config/colors';
 import Text from '../Config/CustomFont';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const CardWrapper = ({iconName,name,emai}) => {
     return (
@@ -26,7 +27,7 @@ class BookingConfirmed extends Component {
         name:props.route.params.name,
         email:props.route.params.email,
         //name:"HELLO THERE WHAT'S UP",
-        email:"Here Goes the Location or so called venue",
+        //email:"Here Goes the Location or so called venue",
         expiryTime:'9:00'
     };
   }
@@ -70,8 +71,10 @@ class BookingConfirmed extends Component {
                 <Text style = {{fontSize:10, marginRight:20}}>COURT NUMBER 7</Text>
             </View>
         </View>
-        <View style = {{alignSelf:'flex-start', marginLeft:30, marginTop:30, marginBottom:50}}>
-            <Text type = "bold" style = {{color:colors.primary, textDecorationLine:'underline', }}>ADD TO MY CALANDER</Text>
+        <View style = {{alignSelf:'flex-start'}}>
+            <TouchableOpacity activeOpacity= {0.7} style = {{ marginLeft:30, marginTop:30, marginBottom:50}}>
+                <Text type = "bold" style = {{ color:colors.primary, textDecorationLine:'underline'}}>ADD TO MY CALANDER</Text>
+            </TouchableOpacity>
         </View>
         <View style = {{alignSelf:'flex-start', marginLeft:20}}>
             <Button 

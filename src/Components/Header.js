@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet,TextInput, Image, SafeAreaView, StatusBar } from 'react-native';
+import { View, StyleSheet,TextInput, Image, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
 
 import colors from '../Config/colors';
 import Text from '../Config/CustomFont';
 
-import {Ionicons} from '@expo/vector-icons';
 import { Platform } from 'react-native';
 import { Dimensions } from 'react-native';
 
@@ -13,6 +12,16 @@ class header extends Component {
     super(props);
     this.state = {
     };
+  }
+
+  notificationPressed = () => {
+    this.props.navigation.navigate("Notifications");
+    //console.log("Notifications");
+  }
+
+  searchPressed = () => {
+    //searching operation
+    console.log("Searching....");
   }
 
   render() {
@@ -27,10 +36,10 @@ class header extends Component {
                 />
             </View>
             <View>
-                <Image source = {require('../assets/Icons/seachiconwhite.png')} style = {styles.image} />
+                <Image source = {require('../assets/Icons/seachiconwhite.png')} style = {styles.image} onPress = {() => {this.searchPressed();}}/>
             </View>   
             <View>
-                <Image source = {require('../assets/Icons/notificationactive.png')} style = {styles.image} />
+                <Image source = {require('../assets/Icons/notificationactive.png')} style = {styles.image} onPress = {() => {this.notificationPressed();}}/>
             </View>           
         </View>
     </SafeAreaView>

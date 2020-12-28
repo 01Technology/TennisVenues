@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, ScrollView,  } from 'react-native';
 import {Input, Button} from 'react-native-elements';
 
-import Text from '../../Config/CustomFont';
-import colors from '../../Config/colors';
+import Text from '../Config/CustomFont';
+import colors from '../Config/colors';
 
 import { Entypo } from '@expo/vector-icons'; 
 
-class Feedbacks extends Component {
+class WriteReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,11 +16,12 @@ class Feedbacks extends Component {
   }
 
   backChevronPressed = () => {
-    this.props.navigation.navigate("Settings");
+    this.props.navigation.navigate("Venues");
   }
 
-  thankyouForFeedbacks = () => {
-    this.props.navigation.navigate("ThankYouForFeedbacks");
+    thankyouForReview = () => {
+        //Operation
+        this.props.navigation.navigate("Venues");
   }
 
   render() {
@@ -31,7 +32,7 @@ class Feedbacks extends Component {
         </TouchableOpacity>
         <View style = {styles.container}>
           <View>
-              <Text type = "bold" style = {styles.feedbacks}>WE WOULD LOVE TO HEAR A FEEDBACK FROM YOU!</Text>
+              <Text type = "bold" style = {styles.feedbacks}>WE WOULD APPRECIATE YOU WRITING A REVIEW FOR THIS VENUE!</Text>
           </View>
           <View>
               <Text style = {styles.content}>{this.state.innerContent}</Text>
@@ -48,7 +49,7 @@ class Feedbacks extends Component {
               title = "SUBMIT"
               buttonStyle={styles.btnStyle}  
               titleStyle = {{ fontFamily:'Lato-Regular'}}
-              onPress = {this.thankyouForFeedbacks}
+              onPress = {this.thankyouForReview}
               />
           </View>
         </View>
@@ -57,7 +58,7 @@ class Feedbacks extends Component {
   }
 }
 
-export default Feedbacks;
+export default WriteReview;
 
 const styles = StyleSheet.create({
   backChevronContainer:{

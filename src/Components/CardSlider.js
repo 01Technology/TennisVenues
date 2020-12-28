@@ -57,7 +57,8 @@ export default class CardSlider extends Component {
                     containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
                     title="BOOK THIS COURT" 
                     buttonStyle={{ width:100, height:35, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => { this.BOOKTHISCOURT(); }}
+                    onPress={()=> {this.props.navigation.navigate("Venues", {name: item.title, email:item.location})} }
+                    //onPress={()=> {this.gotoVenue({item}) }}
                     titleStyle = {{fontSize:8, color:colors.primary, fontFamily:'Lato-Regular'}}
                   />
               </View>
@@ -85,6 +86,7 @@ export default class CardSlider extends Component {
                     pagingEnabled={true}
                     showsHorizontalScrollIndicator={false}
                     legacyImplementation={false}
+                    onScroll = {this.change}
                 />
             </View>
             <View style = {styles.pagination}>
@@ -103,7 +105,6 @@ export default class CardSlider extends Component {
   
   const styles = StyleSheet.create({
     container:{
-        marginLeft:20,
       marginBottom:20,
       width, 
       height:height/2.7

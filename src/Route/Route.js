@@ -18,6 +18,9 @@ import BookTheCourt from '../navigations/BookTheCourt';
 import pay from '../navigations/pay';
 import MakePayment from '../navigations/MakePayment';
 import BookingConfirmed from '../navigations/BookingConfirmed';
+import Venues from '../navigations/Venues';
+import WriteReview from '../navigations/WriteReview';
+import EditProfile from '../navigations/EditProfile'
 
 //Settings
 import Settings from '../navigations/Settings/Settings';
@@ -28,6 +31,17 @@ import PrivacyPolicy from '../navigations/Settings/PrivacyPolicy';
 import Feedbacks from '../navigations/Settings/Feedbacks';
 
 //Components
+import Logout from '../navigations/Settings/Logout';
+import CardSlider from '../Components/CardSlider';
+import CustomTopBarNavigator from '../Components/CustomTopBarNavigator';
+
+//alerts
+import PhoneCamera from '../navigations/Alerts/PhoneCamera';
+import RatethisVenue from '../navigations/Alerts/RatethisVenue';
+import ThankYouForRatings from '../navigations/Alerts/ThankYouForRatings';
+import ThankYouForReview from '../navigations/Alerts/ThankYouForReview';
+import ThankYouForFeedbacks from '../navigations/Alerts/ThankYouForFeedbacks';
+import NotificationsReminder from '../navigations/Notifications/NotificationsReminder';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +69,9 @@ export default function screen(){
                 <Stack.Screen name = "pay" component = {pay}/>
                 <Stack.Screen name = "MakePayment" component = {MakePayment}/>
                 <Stack.Screen name = "BookingConfirmed" component = {BookingConfirmed} />
+                <Stack.Screen name = "Venues" component = {Venues} />
+                <Stack.Screen name = "WriteReview" component = {WriteReview} />
+                <Stack.Screen name = "EditProfile" component = {EditProfile} />
 
                 <Stack.Screen name = "Settings" component = {Settings} />
                 <Stack.Screen name = "notifications" component = {notifications} />
@@ -62,6 +79,17 @@ export default function screen(){
                 <Stack.Screen name = "TermsofUse" component = {TermsofUse} />
                 <Stack.Screen name = "PrivacyPolicy" component = {PrivacyPolicy} />
                 <Stack.Screen name = "Feedbacks" component = {Feedbacks} />
+
+                <Stack.Screen name = "Logout" component = {Logout} />
+                <Stack.Screen name = "PhoneCamera" component = {PhoneCamera} />
+                <Stack.Screen name = "RatethisVenue" component = {RatethisVenue} />
+                <Stack.Screen name = "ThankYouForRatings" component = {ThankYouForRatings} />
+                <Stack.Screen name = "ThankYouForReview" component = {ThankYouForReview} />
+                <Stack.Screen name = "ThankYouForFeedbacks" component = {ThankYouForFeedbacks} />
+                <Stack.Screen name = "NotificationsReminder" component = {NotificationsReminder} />
+
+                <Stack.Screen name = "CardSlider" component = {CardSlider} />
+                <Stack.Screen name = "CustomTopBarNavigator" component = {CustomTopBarNavigator} />
             </Stack.Navigator>
         </NavigationContainer>
     );

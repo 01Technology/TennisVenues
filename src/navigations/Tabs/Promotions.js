@@ -14,6 +14,7 @@ export default class Plus extends Component {
     return (
     <ScrollView>
       <View style = {styles.container}>
+      <ImageBackground source = {require('../../assets/Images/test2.png')} style = {{width:'100%', height:'45%', top:0, backgroundColor:'#229bd2'}}>
         <View style = {styles.top}>
           <View>
             <TextInput 
@@ -27,7 +28,7 @@ export default class Plus extends Component {
           </View>
           <View>
               <Ionicons name="notifications" size={30} color={colors.white}/>
-          </View>   
+          </View>
         </View>
         <View style = {styles.promotionsforyouSection}>
           <View>
@@ -37,7 +38,13 @@ export default class Plus extends Component {
               <Text type = "bold" style = {styles.foryou}>FOR YOU!</Text>
           </View>
         </View>
-
+        <View style = {styles.tennisballRacketContainer}>
+          <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.leftBall}/>
+          <Image source = {require('../../assets/Icons/RACKET-52.png')} style = {styles.racket}/>
+          <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.centerBall} />
+          <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.rightBall} />
+        </View>
+      </ImageBackground>
         <View style = {styles.sectionContainer}>
           <View style = {styles.boxRowContainer}>
             <ImageBackground source={require('../../assets/Images/Rectangle75.png')} style = {styles.box}  imageStyle={styles.boxRadius}>
@@ -114,9 +121,6 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     maxHeight:50,
   },
-  container:{
-    backgroundColor:colors.primary
-  },
   foryou:{
     fontSize:28, color:colors.white, marginLeft:20,
   },
@@ -171,35 +175,22 @@ const styles = StyleSheet.create({
     backgroundColor:colors.white,
     paddingHorizontal:20,
     paddingVertical:20,
-    justifyContent:'space-between'
-  }
-  /*
-  triangle: {
-    position:'absolute',
-    width: 0,
-    height: 0,
-    backgroundColor: "transparent",
-    borderStyle: "solid",
-    borderLeftWidth: Dimensions.get('window').height/2,
-    borderBottomWidth:Dimensions.get('window').width,
-    borderLeftColor: "transparent",
-    borderRightColor: "transparent",
-    borderBottomColor: colors.secondary,
-    transform: [{ rotate: "90deg" }],
+    justifyContent:'space-between',
+    top:-260
   },
-  
-  triangle2: {
-    position:'absolute',
-    width: 0,
-    height: 0,
-    backgroundColor: "transparent",
-    borderStyle: "solid",
-    borderLeftWidth: Dimensions.get('window').height/2,
-    borderBottomWidth:Dimensions.get('window').width,
-    borderLeftColor: "transparent",
-    borderRightColor: "transparent",
-    borderBottomColor: colors.secondary,
-    transform: [{ rotate: "90deg" }],
+  tennisballracketContainer:{
+    flexDirection:'row', position:'absolute', justifyContent:'flex-start', alignItems:'center', top:70, marginHorizontal:20
   },
-  */
+  leftBall:{
+    width:25, height:25, resizeMode:'contain', top:-80, left:20
+  },
+  racket:{
+     width:200, height:180,top:-150,
+  },
+  centerBall:{
+    width:50, height:50, alignSelf:'center', position:'absolute', top:-50,
+  },
+  rightBall:{
+    width:25, height:25, bottom:50, position:'absolute',
+  },
 })

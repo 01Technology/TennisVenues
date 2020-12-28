@@ -5,6 +5,7 @@ import {Button} from 'react-native-elements';
 
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class FirstScreen extends Component {
   constructor(props) {
@@ -66,7 +67,9 @@ export default class FirstScreen extends Component {
                     titleStyle = {{fontSize:20, color:colors.primary, fontFamily:'Lato-Regular'}}
                 />
             </View>
-            <Text type = "Bold" type = "regular" style = {styles.guest} onPress = {()=>{this.guestVisitor();}}>CONTINUE AS GUEST</Text>
+            <TouchableOpacity activeOpacity = {0.7} onPress = {()=>{this.guestVisitor();}}>
+              <Text type = "Bold" type = "regular" style = {styles.guest} >CONTINUE AS GUEST</Text>
+            </TouchableOpacity>
           </View>
           ) : (
             <ActivityIndicator size="large" />
