@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, ActivityIndicator  } from 'react-native';
 import * as Font from 'expo-font';
-import {Button} from 'react-native-elements';
 
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import AppButton from '../../Components/AppButton';
 
 export default class FirstScreen extends Component {
   constructor(props) {
@@ -52,22 +52,22 @@ export default class FirstScreen extends Component {
           <View style = {styles.container}>
             <Image source = {require('../../assets/logo.png')} style = {styles.img} />
             <View>
-                <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="LOGIN" 
-                    buttonStyle={{ width:180, height:55, backgroundColor:colors.primary, borderRadius:50, }} 
-                    onPress={() => { this.loginClick(); }}
-                    titleStyle = {{fontSize:20, fontFamily:'Lato-Regular'}}
+              <View style = {{marginBottom:15}} >
+                <AppButton 
+                  title = "login" 
+                  onPress = { () => this.loginClick() }
                 />
-                <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="SIGNUP" 
-                    buttonStyle={{ width:180, height:55, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => { this.signupClick(); }}
-                    titleStyle = {{fontSize:20, color:colors.primary, fontFamily:'Lato-Regular'}}
+              </View>
+              <View>
+                <AppButton 
+                  title = "signup" 
+                  buttonStyle = {styles.signupBtnStyle}
+                  titleStyle = {{color:colors.primary}}
+                  onPress = { () => this.signupClick() }
                 />
+              </View>
             </View>
-            <TouchableOpacity activeOpacity = {0.7} onPress = {()=>{this.guestVisitor();}}>
+            <TouchableOpacity activeOpacity = {0.7} onPress = {this.guestVisitor}>
               <Text type = "Bold" type = "regular" style = {styles.guest} >CONTINUE AS GUEST</Text>
             </TouchableOpacity>
           </View>
@@ -83,16 +83,23 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     justifyContent:'space-evenly',
-    alignItems:'center'
+    alignItems:'center',
+    backgroundColor:colors.smokewhite
   },
   img:{
     marginHorizontal:10,
-    width:290,
+    width:300,
     height:80
   },
   guest:{
     color:colors.secondary,
     textDecorationLine:'underline', 
     textDecorationColor:colors.secondary,
+    fontSize:16
+  },
+  signupBtnStyle:{ 
+    backgroundColor: colors.smokewhite, 
+    borderColor:colors.primary, 
+    borderWidth:1 
   }
 })

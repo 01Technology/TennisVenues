@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Dimensions, Image, SafeAreaView, TouchableOpacity, StatusBar } from 'react-native';
-import {Input, Button} from 'react-native-elements';
+import { View, StyleSheet, ScrollView, Dimensions, Image, SafeAreaView, TouchableOpacity, StatusBar } from 'react-native';
+import {Input} from 'react-native-elements';
 
+import AppButton from '../Components/AppButton';
+import Text from '../Config/CustomFont';
+import BackChevron from '../Components/BackChevron';
 import ToogleImage from '../Components/ToogleImage';
 import colors from '../Config/colors';
 import { Entypo } from '@expo/vector-icons'; 
@@ -13,6 +16,7 @@ class MakePayment extends Component {
     this.state = {
         name: props.route.params.name,
         email: props.route.params.email,
+        url:props.route.params.url,
         expiryTime:'9:00'
     };
   }
@@ -28,12 +32,10 @@ class MakePayment extends Component {
     return (
     <SafeAreaView>
         <ScrollView>
-            <TouchableOpacity style = {styles.backChevronContainer} onPress = {this.backChevronPressed}>
-                <Entypo name="chevron-thin-left" opacity={0.7} size={30} color={colors.primary} />
-            </TouchableOpacity>
-            <View style = {{marginLeft:35, marginBottom:30, flexDirection:'row', justifyContent:'space-between', alignItems:'center', marginRight:Dimensions.get('window').width/2 }}>
-                    <Text style={{fontSize:20, fontWeight:'bold'}} >{this.state.name}</Text>
-                    <Image source = {require('../assets/crousel1.jpg')} style = {{width:'100%', height:70, marginTop:8}} /> 
+            <BackChevron color = "primary" onPress = {() => {this.props.navigation.navigate("Home")}} style = {styles.BackChevron}/>
+            <View style = {styles.titleContainer}>
+                    <Text type = "black" style={styles.title} >{this.state.name}</Text>
+                    <Image source = {{uri:this.state.url}} style = {styles.image} /> 
             </View>
             <View style = {{  justifyContent:'space-between', marginRight:20}}>
                 <View style = {{marginLeft:35, flexDirection:'row', justifyContent:'space-between', alignItems:'center', marginBottom:30}}>
@@ -120,25 +122,24 @@ class MakePayment extends Component {
                     <Text style = {{fontSize:10,marginRight:10}}> REMEMBER THIS CARD FOR FUTURE BOOKINGS</Text>
                     <ToogleImage />
                 </View>
-                <View style = {{marginLeft:10, marginBottom:80, flexDirection:'row'}}>  
-                    <Ionicons name="lock-closed" size={18} color={colors.secondary} style = {{marginRight:10}}/>  
-                    <View>
-                        <Text style = {{fontSize:11, width:'60%'}}>YOUR PAYMENT IS SSECURED CARD DETAILS WON'T BE SHARED</Text>
-                    </View>
+                <View style = {styles.keyContainer}>  
+                    <Ionicons name="lock-closed" size={24} color={colors.secondary} style = {{marginRight:10}}/>  
+                    <Text style = {styles.keyWords}>YOUR PAYMENT IS SSECURED CARD DETAILS WON'T BE SHARED</Text>
                 </View>
             </View>
+            <View style = {{marginBottom:50}} />
         </ScrollView>
-        <View style = {{ flexDirection:'row', bottom:0, position:'absolute', alignSelf:'stretch', width:'100%', height:'8%', backgroundColor:colors.white, justifyContent:'space-between', alignItems:'center', elevation:500,paddingLeft:20}}>  
-                <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-                    <Text style = {{fontWeight:'bold', marginRight:10}}>Total</Text>
-                    <Text style = {{fontSize:20, fontWeight:'600'}}>$13</Text>
+        <View style = {styles.footerContainer}>  
+                <View style = {styles.totalContainer}>
+                    <Text style = {styles.total}>Total</Text>
+                    <Text style = {styles.price}>$13</Text>
                 </View>
-                <Button 
-                    containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-                    title="PAY NOW" 
-                    buttonStyle={{ width:100, height:35, backgroundColor: colors.primary, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                    onPress={() => {this.paynowPressed();}}
-                    titleStyle = {{fontSize:8, color:colors.white}}
+                <AppButton 
+                    color = "white"
+                    title = "pay now"
+                    buttonStyle = {styles.buttonStyle}
+                    titleStyle = {styles.titleStyle}
+                    onPress = {() => {this.props.navigation.navigate("BookingConfirmed", {name: this.state.name, email:this.state.email, url:this.state.url})}}
                 />
             </View>
     </SafeAreaView>
@@ -149,23 +150,35 @@ class MakePayment extends Component {
 export default MakePayment;
 
 const styles = StyleSheet.create({
-    backChevronContainer:{
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    BackChevron:{
+        top:StatusBar.currentHeight,
         left:20,
-        marginBottom:30,
       },
+      buttonStyle:{
+        backgroundColor:colors.primary,
+        width:120, 
+        height:35, 
+        borderWidth:1
+      }, 
     footerContainer:{
-        //position:'absolute',
         flexDirection:'row', 
         bottom:0, 
-        alignSelf:'stretch', 
+        position:'absolute', 
+        alignSelf:'stretch',
         width:'100%', 
         height:'8%', 
         backgroundColor:colors.white, 
         justifyContent:'space-between', 
         alignItems:'center', 
-        elevation:5,
-        paddingLeft:20
+        elevation:20,
+        paddingHorizontal:20
+    },
+    image:{
+        resizeMode:'contain', 
+        width:Dimensions.get('window').width/2.5, 
+        marginRight:20, 
+        height:100, 
+        marginTop:8
     },
     locationContainer:{
         flexDirection:'row', marginBottom:50
@@ -180,6 +193,46 @@ const styles = StyleSheet.create({
         width:'80%',
         justifyContent:'center',
         alignItems:'center'
+      },
+      keyContainer:{
+        alignItems:'baseline', 
+        marginLeft:10, 
+        marginBottom:80,
+        flexDirection:'row'
+      },
+      keyWords:{
+        fontSize:11, width:'60%'
+      },
+      price:{
+        fontSize:20, 
+        fontWeight:'bold'
+      },
+      titleContainer:{
+        marginLeft:35, 
+        marginRight:20,
+        marginBottom:30, 
+        flexDirection:'row', 
+        justifyContent:'space-between', 
+        alignItems:'baseline'
+      },
+      title:{
+        fontSize:24, 
+        textTransform:'uppercase',
+        marginTop:50,
+        width:Dimensions.get('window').width/2.2
+      },
+      titleStyle:{
+        fontSize:10,
+        color:colors.white,
+      },
+      totalContainer:{
+        flexDirection:'row', 
+        justifyContent:'center', 
+        alignItems:'center'
+      },
+      total:{
+        fontWeight:'bold', 
+        marginRight:10
       },
     venueName:{
         fontSize:32,

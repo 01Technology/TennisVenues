@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View, TextInput, Dimensions,  StyleSheet } from 'react-native';
 import {Button } from 'react-native-elements';
-import { Entypo } from '@expo/vector-icons'; 
 
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
+import BackChevron from '../../Components/BackChevron';
+import AppButton from '../../Components/AppButton';
 
 export default class LoginScreen extends Component {
   constructor() {
@@ -32,7 +33,7 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style = {styles.container}>
-        <Entypo name="chevron-left" size={36} color={colors.primary} style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
+        <BackChevron style={styles.backChevron} onPress={() => { this.backChevronPressed() }} />
         <Text type = "bold" style = {styles.textQuestion} onPress = {()=>{this.forgotPassword()}}>FORGOT YOUR PASSWORD?</Text>
         <Text style = {styles.textToDo} onPress = {()=>{this.forgotPassword()}}>ENTER YOUR USERNAME OR EMAIL ADDRESS AND WE WILL SEND YOU A LINK TO RESET YOUR PASSWORD</Text>
         <View>
@@ -42,12 +43,10 @@ export default class LoginScreen extends Component {
                 style = { styles.input }
             />
         </View>
-        <Button 
-            containerStyle={{ marginTop:20, paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-            title="SEND EMAIL" 
-            buttonStyle={{width:180,height:45, backgroundColor: colors.primary, borderRadius:50, }} 
-            onPress={() => { this.sendEmailPressed() ; }}
-            titleStyle = {{fontSize:16, fontWeight:'100'}}
+        <AppButton 
+          title = "send email"
+          buttonStyle = {styles.buttonStyle}
+          titleStyle = {styles.titleStyle}
         />
         <View style = {{marginTop:100}}>
             <Text style = {styles.text} onPress = {()=>{this.forgotPassword()}}>DON'T HAVE AN ACCOUNT? <Text type="black" style = {{ color:colors.primary}} onPress = {()=>{this.Signup();}}>SIGN UP!</Text></Text>
@@ -68,6 +67,9 @@ const styles = StyleSheet.create({
     top:35,
     left:10
   },
+  buttonStyle:{
+    height:45, marginTop:30
+  },
   textQuestion:{ 
     marginTop:15, 
     fontSize:18,
@@ -81,6 +83,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
     textAlign:'center',
     alignSelf:'center', 
+  },
+  titleStyle:{
+    fontSize:18
   },
   input:{
     borderRadius:12, 

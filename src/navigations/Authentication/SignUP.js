@@ -1,9 +1,12 @@
 import React from 'react';
-import {View,StyleSheet, Text, Image, Alert} from 'react-native';    
+import {View,StyleSheet, Image} from 'react-native';    
 import {Input, Button} from 'react-native-elements';
 import { Entypo } from '@expo/vector-icons'; 
 
 import colors from '../../Config/colors';
+import Text from '../../Config/CustomFont';
+import BackChevron from '../../Components/BackChevron';
+import AppButton from '../../Components/AppButton';
 
 export default class Update extends React.Component{
     constructor(){
@@ -21,16 +24,14 @@ export default class Update extends React.Component{
      this.props.navigation.navigate("FirstScreen");
     }
 
-    signupClicked = () => {
-      //console.log(this.state.username);
-      //Alert.alert("Thank You For Sigining UP..", "Login To Continue");
+    signupClick = () => {
       this.props.navigation.navigate("OTPVerification");
     }
 
 render(){
     return (
       <View style = {{flex:1, justifyContent:'space-evenly', marginHorizontal:22, marginTop:10}}>
-            <Entypo name="chevron-left" size={36} color={colors.primary} style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
+            <BackChevron style={styles.backChevron} onPress={() => { this.backChevronPressed() }} />
             <Image source = {require('../../assets/logo.png')} style = {styles.img} />
             <View style = {{ justifyContent:'center', alignItems:'center'}}>
               <Input
@@ -65,14 +66,13 @@ render(){
               />
             </View>
             <View>
-              <Button 
-                  containerStyle={{ paddingLeft:10, paddingRight:10 }}
-                  title="SIGNUP" 
-                  buttonStyle={{ alignSelf:'center', width:180, height:55, backgroundColor: colors.smokewhite, borderRadius:50, borderColor:colors.primary, borderWidth:2 }}  
-                  onPress={() => { this.signupClicked(); }}
-                  titleStyle = {{fontSize:20, color:colors.primary, fontFamily:'Lato-Regular'}}
-              />
-            </View> 
+                <AppButton 
+                  title = "signup" 
+                  buttonStyle = {styles.signupBtnStyle}
+                  titleStyle = {{color:colors.primary}}
+                  onPress = { () => this.signupClick() }
+                />
+            </View>
       </View>
     )
   }
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   img:{
     alignSelf:'center',
     top:25,
-    width:290,
+    width:300,
     height:80
   },
   input:{
@@ -96,5 +96,11 @@ const styles = StyleSheet.create({
   },
   inputFont:{
     fontFamily:'Lato-Regular'
-  }
+  },
+  signupBtnStyle:{ 
+    backgroundColor: colors.smokewhite, 
+    borderColor:colors.primary, 
+    borderWidth:1 ,
+    alignSelf:'center'
+  },
 })

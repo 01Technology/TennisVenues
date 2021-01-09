@@ -1,87 +1,90 @@
-import React, { Component } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
-import {Button, Input} from 'react-native-elements';
-import { Entypo } from '@expo/vector-icons'; 
+import React from 'react';
+import { View, StyleSheet, Image, Alert } from 'react-native';
+import { Input, Button } from 'react-native-elements';
+import { Entypo } from '@expo/vector-icons';
 
-import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
+import AppButton from '../../Components/AppButton';
+import colors from '../../Config/colors';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import BackChevron from '../../Components/BackChevron';
 
-export default class LoginScreen extends Component {
-  constructor(props) {
-    super(props);
+export default class Update extends React.Component {
+  constructor() {
+    super();
     this.state = {
-    };
+      username: '',
+      email: '',
+      pw: '',
+    }
   }
 
   backChevronPressed = () => {
     this.props.navigation.navigate("FirstScreen");
   }
 
-  loginClick = () => {
+  loginClicked = () => {
     this.props.navigation.navigate("HomeScreen");
   }
 
   forgotPassword = () => {
-  this.props.navigation.navigate("ForgotPassword");
-  } 
-
-  
+    this.props.navigation.navigate("ForgotPassword");
+  }
 
   render() {
     return (
-      <View style = {styles.container}>
-        <Entypo name="chevron-left" size={36} color={colors.primary} style ={styles.backChevron} onPress = {()=>{this.backChevronPressed()}}/>
-        <Image source = {require('../../assets/logo.png')} style = {styles.img} />
-        <Input
-          placeholder='USERNAME / EMAIL'
-          inputContainerStyle ={[styles.input, {marginTop:50}]}
-          style = {{fontFamily:"Lato-Light"}}
-        />
-        <Input
-          placeholder='PASSWORD'
-          inputContainerStyle ={styles.input}
-          style = {{fontFamily:"Lato-Light"}}
-        />
-        <Button 
-            containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
-            title="LOGIN" 
-            buttonStyle={{marginTop:30, width:180, height:55, backgroundColor: colors.primary, borderRadius:50, }} 
-            onPress={() => { this.loginClick(); }}
-            titleStyle = {{fontSize:20, fontFamily:'Lato-Regular'}}
-        />
-        <Text type ="light" style = {styles.text} onPress = {()=>{this.forgotPassword()}}>FORGOT PASSWORD?</Text>
-      </View> 
-    );
+      <View style={{ flex: 1, justifyContent: 'space-evenly', marginHorizontal: 22, marginTop: 10 }}>
+        <BackChevron style={styles.backChevron} onPress={() => { this.backChevronPressed() }} />
+        <Image source={require('../../assets/logo.png')} style={styles.img} />
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Input
+            placeholder='USERNAME / EMAIL'
+            inputContainerStyle={styles.input}
+            onChangeText={(val) => { this.setState({ username: val }) }}
+            style={styles.inputFont}
+          />
+          <Input
+            placeholder='PASSWORD'
+            inputContainerStyle={styles.input}
+            onChangeText={(val) => { this.setState({ pw: val }) }}
+            style={styles.inputFont}
+          />
+        </View>
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <AppButton title="login" onPress={() => { this.loginClicked() }} />
+          <TouchableOpacity activeOpacity={0.7} onPress={() => { this.forgotPassword() }} style={styles.forgotpasswordContainer}>
+            <Text type="light" style={styles.text}>FORGOT PASSWORD?</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    )
   }
 }
 
+
 const styles = StyleSheet.create({
-  backChevron:{
-    position:'absolute', 
-    top:35,
-    left:10
+  backChevron: {
+    position: 'absolute',
+    top: 35,
+    left: 0
   },
-  container:{
-    flex:1,
-    justifyContent:'center',
-    alignItems: 'center',
+  forgotpasswordContainer: {
+    marginVertical: 10,
   },
-  img:{
-    alignSelf:'center',
-    position:'absolute',
-    top:100,
-    width:290,
-    height:80
+  img: {
+    alignSelf: 'center',
+    top: 25,
+    width: 300,
+    height: 80
   },
-  
-  input:{
-    borderBottomColor:colors.primary, 
-    marginHorizontal:45, 
-    paddingLeft:10,
+  input: {
+    borderBottomColor: colors.primary, marginHorizontal: 45, paddingLeft: 10,
   },
-  text:{ 
-    marginTop:15, 
-    alignSelf:'center', 
-    color:colors.primary, textDecorationLine:'underline', textDecorationColor:colors.primary
+  inputFont: {
+    fontFamily: 'Lato-Regular'
+  },
+  text: {
+    textDecorationLine: 'underline',
+    color: colors.primary
   }
 })

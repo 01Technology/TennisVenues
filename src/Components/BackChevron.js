@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import {Entypo} from '@expo/vector-icons'
+import { TouchableOpacity, } from 'react-native';
 
-class BackChevron extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+import colors from '../Config/colors';
 
-  render() {
-    return (
-      <View>
-        <Text> BackChevron </Text>
-      </View>
-    );
-  }
+function BackChevron({onPress, color = "primary", style}) {
+  return (
+    <TouchableOpacity style={style}>
+      <Entypo name="chevron-thin-left" size={32} color={colors[color]} onPress={onPress} />
+    </TouchableOpacity>
+  );
 }
 
 export default BackChevron;

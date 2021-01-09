@@ -5,8 +5,6 @@ import { Card, Button } from 'react-native-elements';
 import colors from '../Config/colors';
 //import Text from '../Config/CustomFont';
 import ReviewBall from "../Components/ReviewBall";
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
 
 const images = [
     {
@@ -39,10 +37,9 @@ export default class CardSlider extends Component {
     state = {
       active:0,
     }
-
     _renderItem = ({item}) => {
         return(
-            <Card image = {{uri:item.url}} >
+            <Card image = {{uri:item.url}} borderRadius = {12} containerStyle = {{ elevation:10}} >
             <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
               <View>
                   <Text style = {{fontWeight:'bold'}}>{item.title}</Text>
@@ -51,7 +48,7 @@ export default class CardSlider extends Component {
                     <ReviewBall />
                     <Image source = {require('../assets/Icons/BALL-531.png')} style ={{width:20, height:20}} />
                   </View>
-              </View>
+              </View> 
               <View>
                   <Button 
                     containerStyle={{ paddingLeft:10, paddingRight:10, paddingTop:5, paddingBottom:5, }}
@@ -67,7 +64,6 @@ export default class CardSlider extends Component {
         );
     }
     
-  
     change = ({nativeEvent}) => {
       const slide = Math.ceil(nativeEvent.contentOffset.x/nativeEvent.layoutMeasurement.width);
       if(slide!==this.state.active){
@@ -86,9 +82,10 @@ export default class CardSlider extends Component {
                     pagingEnabled={true}
                     showsHorizontalScrollIndicator={false}
                     legacyImplementation={false}
-                    onScroll = {this.change}
+                    //onScroll = {this.change}
                 />
             </View>
+{/*             
             <View style = {styles.pagination}>
                 {
                 images.map((i,k) => {
@@ -98,39 +95,37 @@ export default class CardSlider extends Component {
                 })
                 }
             </View>
-        </View>
+*/}
+        </View> 
       );
     }
   }
   
   const styles = StyleSheet.create({
-    container:{
-      marginBottom:20,
-      width, 
-      height:height/2.7
-    },
-    scroll:{
-      marginTop:20,
-      width, 
-      height
-    },
+
+    // scroll:{
+    //   marginTop:20,
+    //   width, 
+    //   height
+    // },
     image:{
-      width, height, resizeMode: 'contain'
+      width:'100%', height:200, resizeMode: 'contain'
     },
-    pagination:{
-      flexDirection:'row', 
-      position:'absolute', 
-      bottom:0,
-      alignSelf:'center' 
-    },
-    pagingText:{
-      color:'white',
-      margin:3,
-      color:'#888'
-    },
-    pagingActiveText:{
-      color:'white',
-      margin:3,
-      color:'#fff'
-    }
+
+    // pagination:{
+    //   flexDirection:'row', 
+    //   position:'absolute', 
+    //   bottom:0,
+    //   alignSelf:'center' 
+    // },
+    // pagingText:{
+    //   color:'white',
+    //   margin:3,
+    //   color:'#888'
+    // },
+    // pagingActiveText:{
+    //   color:'white',
+    //   margin:3,
+    //   color:'#fff'
+    // }
   })

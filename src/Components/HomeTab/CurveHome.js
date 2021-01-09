@@ -1,0 +1,51 @@
+import React, { Component } from 'react';
+import { View, StyleSheet} from 'react-native';
+
+import colors from '../../Config/colors';
+
+class CurveHome extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active:0,
+    };
+  }
+
+  render() {
+    return (
+    <>
+        <View style={styles.curvedbackgroundViewStyle}>
+        </View>
+        <View style={styles.curvedforegroundViewStyle}>
+        </View>
+    </>
+    );
+  }
+}
+
+export default CurveHome;
+
+const styles = StyleSheet.create({
+  curvedforegroundViewStyle:{
+    position:'absolute',
+    backgroundColor: colors.primary, 
+    width: '210%', 
+    height: '80%', 
+    borderBottomLeftRadius: 150,
+    left:-120, 
+    borderBottomRightRadius: 650,
+    top: '-58%'
+    //top:-Dimensions.get('window').height,
+  },
+  curvedbackgroundViewStyle:{
+    position:'absolute',
+    backgroundColor: colors.smokewhiteMedium, 
+    width: '210%', 
+    height: '80%', 
+    borderBottomLeftRadius: 150,
+    left:-140, 
+    borderBottomRightRadius: 650,
+    top: '-55.5%'
+    //top:-Dimensions.get('window').height + 30,
+  },
+})

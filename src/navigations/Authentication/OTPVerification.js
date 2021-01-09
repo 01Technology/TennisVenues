@@ -21,29 +21,34 @@ export default class OTPVerification extends React.Component{
                   <View style = {{flexDirection:'row', justifyContent:'space-evenly', marginTop:45}}>
                     <View>
                         <Input
+                            maxLength = {1}
                             inputContainerStyle ={styles.input}
                             keyboardType = "number-pad"
                         />
                     </View>
                     <View>
                         <Input
+                            maxLength = {1}
                             inputContainerStyle ={styles.input}
                             keyboardType = "number-pad"
                         />
                     </View>
                     <View>
                         <Input
+                            maxLength = {1}
                             inputContainerStyle ={styles.input}
                             keyboardType = "number-pad"
                         />
                     </View>
                     <View>
                         <Input
+                            maxLength = {1}
                             inputContainerStyle ={styles.input}
                             keyboardType = "number-pad"
                         />
                     </View><View>
                         <Input
+                            maxLength = {1}
                             inputContainerStyle ={styles.input}
                             keyboardType = "number-pad"
                         />

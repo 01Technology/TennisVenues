@@ -3,6 +3,8 @@ import { View, StyleSheet, Dimensions, TouchableOpacity, SafeAreaView, Platform,
 import { Input, Button, Divider, CheckBox } from 'react-native-elements';
 import { Entypo } from '@expo/vector-icons';
 
+
+import AppButton from '../Components/AppButton';
 import colors from '../Config/colors';
 import Text from '../Config/CustomFont';
 
@@ -15,6 +17,7 @@ export default class BookTheCourt extends React.Component {
     this.state = {
       name: props.route.params.name,
       email: props.route.params.email,
+      url:props.route.params.url,
       checked: false
     }
   }
@@ -24,10 +27,13 @@ export default class BookTheCourt extends React.Component {
   }
 
   makePaymentPressed = () => {
-    this.props.navigation.navigate("MakePayment", { name: this.state.name, email: this.state.email });
+    this.props.navigation.navigate("MakePayment", { name: this.state.name, email: this.state.email, url:this.state.url });
+  }
+
+  checkboxPressed = () => {
+    this.setState({checked:!this.state.checked});
   }
   render() {
-    console.log(this.state.name);
     return (
       <SafeAreaView>
         <ScrollView>
@@ -36,7 +42,7 @@ export default class BookTheCourt extends React.Component {
           </TouchableOpacity>
           <View style={styles.contentContainer}>
             <View>
-              <Text style={styles.venueName}>{this.state.name}</Text>
+              <Text type = "black" style={styles.venueName}>{this.state.name}</Text>
             </View>
             <View style={styles.locationContainer}>
               <Ionicons name="location" size={36} color={colors.secondary} />
@@ -144,36 +150,27 @@ export default class BookTheCourt extends React.Component {
                 </View>
               </View>
             </View>
-            <View style={{ justifyContent: 'flex-start', marginLeft:-20 }}>
+            <View style={styles.checkboxContainer}>
               <CheckBox  
-                title='TERMS AND CONDITIONS'
-                containerStyle = {{backgroundColor:'transparent'}}
                 checked={this.state.checked} 
-                onPress = { () => {this.setState({checked:!this.state.checked})} }
+                onPress = { () => {this.checkboxPressed();} }
               />
+              <Text style={styles.termsandconditions}>Terms and conditions</Text>
             </View>
-            <View style={{marginBottom: 20, }}>
+            <View style={styles.feesContainer}>
               <View style={{ marginBottom: 20 }}>
                 <Text>FEES</Text>
               </View>
-              <View style={{ flexDirection: 'row', marginBottom: 20, justifyContent: 'space-between', alignItem: 'center', alignSelf: 'stretch' }}>
-                <View>
+              <View style={styles.courtFee}>
                   <Text>1 HR * COURT FEE</Text>
-                </View>
-                <View>
                   <Text style={{ fontSize: 20 }}>$12</Text>
-                </View>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItem: 'center', alignSelf: 'stretch' }}>
-                <View>
                   <Text>BOOKING FEE</Text>
-                </View>
-                <View>
                   <Text style={{ fontSize: 20 }}>$1</Text>
-                </View>
               </View>
               <View style={{ marginBottom: 20 }}>
-                <Divider style={{ height: 2, width: '100%', backgroundColor: colors.secondary }}></Divider>
+                <Divider style={styles.divider}></Divider>
               </View>
               <View style={{ flexDirection: 'row', marginBottom: 50, justifyContent: 'space-between', alignItem: 'center', alignSelf: 'stretch' }}>
                 <View>
@@ -184,21 +181,19 @@ export default class BookTheCourt extends React.Component {
                 </View>
               </View>
             </View>
-
           </View>
         </ScrollView>
         <View style={styles.footerContainer}>
-          <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+          <View style={styles.totalContainer}>
             <Text type="bold" style={{ marginRight: 10 }}>Total</Text>
             <Text type="bold" style={{ fontSize: 20, }}>$13</Text>
           </View>
-          <Button
-            containerStyle={{ paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, }}
-            title="MAKE PAYMENT"
-            buttonStyle={{ width: 100, height: 35, backgroundColor: colors.primary, borderRadius: 50, borderColor: colors.primary, borderWidth: 2 }}
-            onPress={() => { this.makePaymentPressed(); }}
-            titleStyle={{ fontSize: 8, color: colors.white }}
-          />
+            <AppButton 
+                  title = "make payment"
+                  buttonStyle = {styles.buttonStyle}
+                  titleStyle = {styles.titleStyle}
+                  onPress = {() => {this.props.navigation.navigate("MakePayment", {name: this.state.name, email:this.state.email, url:this.state.url})}}
+              />
         </View>
       </SafeAreaView>
     );
@@ -206,9 +201,6 @@ export default class BookTheCourt extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    marginHorizontal: 30,
-  },
   backChevronContainer:{
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     left:20,
@@ -217,8 +209,55 @@ const styles = StyleSheet.create({
   backChevron: {
     resizeMode: "contain",
   },
+  buttonStyle:{
+    backgroundColor:colors.primary,
+    width:120, 
+    height:35, 
+    borderWidth:1
+  }, 
+  checkboxContainer:{
+    justifyContent: 'flex-start', 
+    alignItems:'center', 
+    flexDirection:'row', 
+    marginLeft:-20,
+    marginBottom:20
+  },
+  contentContainer: {
+    marginHorizontal: 30,
+  },
+  courtFee:{
+    flexDirection: 'row', 
+    marginBottom: 20, 
+    justifyContent: 'space-between', 
+    alignSelf: 'stretch'
+  },
+  divider:{
+    height: 2, 
+    width: '100%', 
+    backgroundColor: colors.secondary 
+  },
+  
   formContainer: {
 
+  },
+  
+  feesContainer:{
+    marginBottom:50,
+  },
+  formText: {
+    fontFamily: 'Lato-Bold'
+  },
+  footerContainer: {
+    flexDirection: 'row', 
+    bottom: 0, 
+    position: 'absolute', 
+    alignSelf: 'stretch', 
+    width: '100%', height: '8%', 
+    backgroundColor: colors.white, 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    elevation: 20, 
+    paddingHorizontal: 20
   },
   input: {
     borderBottomColor: colors.primary,
@@ -230,18 +269,26 @@ const styles = StyleSheet.create({
   location: {
     marginLeft: 5,
     width: 125,
-    fontSize: 12
+    fontSize: 12,
+    textTransform:'uppercase'
+  },
+  termsandconditions:{
+    marginLeft:-10, 
+    textTransform:'uppercase', 
+    textDecorationLine:'underline', 
+    color:colors.primary
+  },
+  totalContainer:{
+    flexDirection: 'row', justifyContent: 'center', alignItems: 'center' 
+  },
+  titleStyle:{
+    fontSize:10,
+    color:colors.white,
   },
   venueName: {
     fontSize: 32,
-    fontFamily: 'Lato-Bold',
     width: 250,
-    marginBottom: 5
+    marginBottom: 5,
+    textTransform:'uppercase'
   },
-  formText: {
-    fontFamily: 'Lato-Bold'
-  },
-  footerContainer: {
-    flexDirection: 'row', bottom: 0, position: 'absolute', alignSelf: 'stretch', width: '100%', height: '8%', backgroundColor: colors.white, justifyContent: 'space-between', alignItems: 'center', elevation: 500, paddingLeft: 20
-  }
 })

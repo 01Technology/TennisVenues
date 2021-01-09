@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text ,StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
+
+import colors from '../../Config/colors';
 
 class SplashScreen extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.props.navigation.replace('FirstScreen');
-            //this.props.navigation.replace('HomeScreen');
-            //this.props.navigation.navigate("MakePayment");
             }, 3000);    
     }
   render() {
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        backgroundColor:colors.smokewhite
     },
     img:{
         width:260,

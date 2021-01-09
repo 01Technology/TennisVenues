@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import {Ratings}from 'react-native-elements';
 
 import { Rating } from "react-native-rating-element";
 

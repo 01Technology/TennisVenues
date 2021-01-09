@@ -4,7 +4,7 @@ import {Avatar} from 'react-native-elements';
 
 import colors from '../Config/colors';
 
-const width = Dimensions.get('window').width-10 ;
+const width = Dimensions.get('window').width-20 ;
 const height = Dimensions.get('window').height/6;
 
 const reviews = [
@@ -30,7 +30,6 @@ export default class ReviewSlider extends Component {
     return (
       <View style={styles.container}>
         <ScrollView 
-          pagingEnabled 
           horizontal 
           onScroll = {this.change}
           showsHorizontalScrollIndicator = {false}

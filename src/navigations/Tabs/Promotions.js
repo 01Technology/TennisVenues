@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, TextInput, Image, Dimensions, TouchableOpacity,ImageBackground} from 'react-native';
-import { Avatar, Card, Button,  } from 'react-native-elements';
 
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
-import urls from '../../utils/urls';
+import Header from '../../Components/Header';
 
 import { Ionicons } from '@expo/vector-icons'; 
 
@@ -13,47 +12,40 @@ export default class Plus extends Component {
   render() {
     return (
     <ScrollView>
-      <View style = {styles.container}>
-      <ImageBackground source = {require('../../assets/Images/test2.png')} style = {{width:'100%', height:'45%', top:0, backgroundColor:'#229bd2'}}>
+      <ImageBackground source = {require('../../assets/Images/test.jpg')} style = {styles.topImageBackground}>
         <View style = {styles.top}>
-          <View>
-            <TextInput 
-                placeholder = "SEARCH FOR VENUES" 
-                onChangeText = {(val) => {this.setState({email: val})}} 
-                style = { styles.input } 
+          <Header
+              color="white"
+              search={require('../../assets/Icons/seachiconwhite.png')}
+              notifications={require('../../assets/Icons/notificationactive.png')}
             />
-          </View> 
-          <View>
-              <Ionicons name="search" size={30} color={colors.white} />
-          </View>
-          <View>
-              <Ionicons name="notifications" size={30} color={colors.white}/>
-          </View>
         </View>
-        <View style = {styles.promotionsforyouSection}>
-          <View>
-            <Text type = "bold" style = {styles.promotions}>PROMOTIONS</Text>
+        <View style = {{flexDirection:'row', justifyContent:'space-between'}}>
+          <View style = {styles.tennisballracketContainer}>
+            <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.leftBall}/>
+            <Image source = {require('../../assets/Icons/RACKET-52.png')} style = {styles.racket}/>
+            <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.centerBall} />
+            <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.rightBall} />
           </View>
-          <View>
-              <Text type = "bold" style = {styles.foryou}>FOR YOU!</Text>
+          <View style = {styles.promotionsforyouSection}>
+            <View>
+              <Text type = "bold" style = {styles.promotions}>PROMOTIONS</Text>
+            </View>
+            <View>
+                <Text type = "bold" style = {styles.foryou}>FOR YOU!</Text>
+            </View>
           </View>
-        </View>
-        <View style = {styles.tennisballRacketContainer}>
-          <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.leftBall}/>
-          <Image source = {require('../../assets/Icons/RACKET-52.png')} style = {styles.racket}/>
-          <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.centerBall} />
-          <Image source = {require('../../assets/Icons/BALL-531.png')} style = {styles.rightBall} />
         </View>
       </ImageBackground>
         <View style = {styles.sectionContainer}>
           <View style = {styles.boxRowContainer}>
-            <ImageBackground source={require('../../assets/Images/Rectangle75.png')} style = {styles.box}  imageStyle={styles.boxRadius}>
+            <ImageBackground source={require('../../assets/Images/Rectangle75.png')} style = {styles.box}>
               <View style = {styles.boxTextContainer}>
                 <Text type = "bold" style = {styles.textOffer}>Hey There </Text>
                 <Text type = "thin" style = {styles.textOfferContent}>Hey there this iss lorem ipsums </Text>
               </View>
             </ImageBackground>
-            <ImageBackground source={require('../../assets/Images/Rectangle76.png')} style = {styles.box}  imageStyle={styles.boxRadius}>
+            <ImageBackground source={require('../../assets/Images/Rectangle76.png')} style = {styles.box}>
               <View style = {styles.boxTextContainer}>
                 <Text type = "bold" style = {styles.textOffer}>Hey there </Text>
                 <Text type = "thin" style = {styles.textOfferContent}>Hey there this iss lorem ipsums </Text>
@@ -61,13 +53,13 @@ export default class Plus extends Component {
             </ImageBackground>
           </View>
           <View style = {styles.boxRowContainer}>
-            <ImageBackground source={require('../../assets/Images/Rectangle77.png')} style = {styles.box}  imageStyle={styles.boxRadius}>
+            <ImageBackground source={require('../../assets/Images/Rectangle77.png')} style = {styles.box}>
               <View style = {styles.boxTextContainer}>
                 <Text type = "bold" style = {styles.textOffer}>Hey there </Text>
                 <Text type = "thin" style = {styles.textOfferContent}>Hey there this iss lorem ipsums </Text>
               </View>
             </ImageBackground>
-            <ImageBackground source={require('../../assets/Images/Rectangle78.png')} style = {styles.box}  imageStyle={styles.boxRadius}>
+            <ImageBackground source={require('../../assets/Images/Rectangle78.png')} style = {styles.box}>
               <View style = {styles.boxTextContainer}>
                 <Text type = "bold" style = {styles.textOffer}>Hey there </Text>
                 <Text type = "thin" style = {styles.textOfferContent}>Hey there this iss lorem ipsums </Text>
@@ -75,13 +67,13 @@ export default class Plus extends Component {
             </ImageBackground>
           </View>
           <View style = {styles.boxRowContainer}>
-            <ImageBackground source={require('../../assets/Images/Rectangle79.png')} style = {styles.box}  imageStyle={styles.boxRadius}>
+            <ImageBackground source={require('../../assets/Images/Rectangle79.png')} style = {styles.box}>
               <View style = {styles.boxTextContainer}>
                 <Text type = "bold" style = {styles.textOffer}>Hey there </Text>
                 <Text type = "thin" style = {styles.textOfferContent}>Hey there this iss lorem ipsums </Text>
               </View>
             </ImageBackground>
-            <ImageBackground source={require('../../assets/Images/Rectangle80.png')} style = {styles.box}  imageStyle={styles.boxRadius}>
+            <ImageBackground source={require('../../assets/Images/Rectangle80.png')} style = {styles.box}>
               <View style = {styles.boxTextContainer}>
                 <Text type = "bold" style = {styles.textOffer}>Hey there </Text>
                 <Text type = "thin" style = {styles.textOfferContent}>Hey there this iss lorem ipsums </Text>
@@ -89,7 +81,6 @@ export default class Plus extends Component {
             </ImageBackground>
           </View>
         </View>
-      </View>
       </ScrollView>
     );
   }
@@ -99,18 +90,17 @@ const styles = StyleSheet.create({
   boxRowContainer:{
     flexDirection:'row',
     justifyContent:'space-between',
-    marginBottom:20
+    marginBottom:20,
+    overflow:'hidden'
   },
   box:{
     width: Dimensions.get('window').width/2.5,
     height: Dimensions.get('window').height/4.5,
     backgroundColor:'red',
     justifyContent:'flex-end',
-    alignItems:'center',
+    alignItems:'stretch',
     borderRadius: 6, 
-    overflow: 'hidden'
-  },
-  boxRadius:{
+    overflow: 'hidden',
     borderRadius:12
   },
   boxTextContainer:{
@@ -125,12 +115,15 @@ const styles = StyleSheet.create({
     fontSize:28, color:colors.white, marginLeft:20,
   },
   top:{
-    marginTop:25,
     padding:10,
     flexDirection:'row',
     marginLeft:10,
     justifyContent:'space-between',
-    alignSelf:'stretch'
+    //alignSelf:'stretch'
+  },
+  topImageBackground:{
+    width:'100%', 
+    height:Dimensions.get('window').height/3, 
   },
   input:{
     borderRadius:12, 
@@ -144,7 +137,11 @@ const styles = StyleSheet.create({
     backgroundColor:colors.white,
   },
   image:{
-    resizeMode:"cover", width:169, height:101, borderRadius: 12,shadowColor: "#000", 
+    resizeMode:"cover", 
+    width:169, 
+    height:101, 
+    borderRadius: 12,
+    shadowColor: "#000", 
   },
   topCurve:{
     backgroundColor:colors.primary, 
@@ -156,9 +153,6 @@ const styles = StyleSheet.create({
   },
   textOfferContent:{
     fontSize:10
-  },
-  bottomCurve:{
-
   },
   promotionsforyouSection:{
     marginRight:20,
@@ -175,22 +169,23 @@ const styles = StyleSheet.create({
     backgroundColor:colors.white,
     paddingHorizontal:20,
     paddingVertical:20,
-    justifyContent:'space-between',
-    top:-260
   },
   tennisballracketContainer:{
-    flexDirection:'row', position:'absolute', justifyContent:'flex-start', alignItems:'center', top:70, marginHorizontal:20
+    flexDirection:'row', 
+    justifyContent:'flex-start', 
   },
   leftBall:{
-    width:25, height:25, resizeMode:'contain', top:-80, left:20
+    width:25, height:25, left:10, top:20
   },
   racket:{
-     width:200, height:180,top:-150,
+     width:Dimensions.get('window').width/3, height:Dimensions.get('window').height/5,
+     position:'absolute',
+     left:-20,
   },
   centerBall:{
-    width:50, height:50, alignSelf:'center', position:'absolute', top:-50,
+    width:50, height:50, position:'absolute', bottom:-30, left:70,
   },
   rightBall:{
-    width:25, height:25, bottom:50, position:'absolute',
+    width:25, height:25, left:'80%', top:'150%'
   },
 })
