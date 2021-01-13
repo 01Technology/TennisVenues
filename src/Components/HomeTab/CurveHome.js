@@ -4,12 +4,6 @@ import { View, StyleSheet} from 'react-native';
 import colors from '../../Config/colors';
 
 class CurveHome extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active:0,
-    };
-  }
 
   render() {
     return (
@@ -34,8 +28,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 150,
     left:-120, 
     borderBottomRightRadius: 650,
-    top: '-58%'
-    //top:-Dimensions.get('window').height,
+    top: '-61%'
   },
   curvedbackgroundViewStyle:{
     position:'absolute',
@@ -43,9 +36,8 @@ const styles = StyleSheet.create({
     width: '210%', 
     height: '80%', 
     borderBottomLeftRadius: 150,
-    left:-140, 
+    left:-150, 
     borderBottomRightRadius: 650,
-    top: '-55.5%'
-    //top:-Dimensions.get('window').height + 30,
+    top: '-59%'
   },
 })

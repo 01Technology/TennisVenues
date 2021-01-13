@@ -1,10 +1,9 @@
 import React from 'react';
-import {View,StyleSheet, Image} from 'react-native';    
-import {Input, Button} from 'react-native-elements';
-import { Entypo } from '@expo/vector-icons'; 
+import {View, StyleSheet, Image} from 'react-native';    
+import {Input} from 'react-native-elements';
 
+import urls from '../../utils/urls';
 import colors from '../../Config/colors';
-import Text from '../../Config/CustomFont';
 import BackChevron from '../../Components/BackChevron';
 import AppButton from '../../Components/AppButton';
 
@@ -30,10 +29,10 @@ export default class Update extends React.Component{
 
 render(){
     return (
-      <View style = {{flex:1, justifyContent:'space-evenly', marginHorizontal:22, marginTop:10}}>
+      <View style = {styles.container}>
             <BackChevron style={styles.backChevron} onPress={() => { this.backChevronPressed() }} />
-            <Image source = {require('../../assets/logo.png')} style = {styles.img} />
-            <View style = {{ justifyContent:'center', alignItems:'center'}}>
+            <Image source = {urls.logo} style = {styles.img} />
+            <View style = {styles.inputfieldsContainer}>
               <Input
                 placeholder='USERNAME'
                 inputContainerStyle ={styles.input}
@@ -80,6 +79,12 @@ render(){
 
 
 const styles = StyleSheet.create({
+  container:{
+    flex:1, 
+    justifyContent:'space-evenly', 
+    marginHorizontal:22, 
+    marginTop:10
+  },
   backChevron:{
     position:'absolute', 
     top:35,
@@ -96,6 +101,10 @@ const styles = StyleSheet.create({
   },
   inputFont:{
     fontFamily:'Lato-Regular'
+  },
+  inputfieldsContainer:{
+    justifyContent:'center', 
+    alignItems:'center',
   },
   signupBtnStyle:{ 
     backgroundColor: colors.smokewhite, 

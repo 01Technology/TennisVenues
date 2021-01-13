@@ -6,6 +6,7 @@ import { Rating } from "react-native-rating-element";
 import Text from '../../../Config/CustomFont';
 import colors from '../../../Config/colors';
 import AppButton from '../../AppButton';
+import urls from '../../../utils/urls';
 
 function CardItem({image, title, subTitle, onPress}) {
     
@@ -24,8 +25,8 @@ function CardItem({image, title, subTitle, onPress}) {
                                 onIconTap={position => console.log(`User pressed: ${position}`)}
                                 direction="row"
                                 type="custom"
-                                selectedIconImage={require('../../../assets/Icons/BALL-2-391.png')}
-                                emptyIconImage={require('../../../assets/Icons/BALL-531.png')}
+                                selectedIconImage={urls.coloredTennisBall}
+                                emptyIconImage={urls.whiteTennisBall}
                             />
                         </View>
                     </View>

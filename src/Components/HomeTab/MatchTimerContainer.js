@@ -1,25 +1,25 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
+import { Divider } from 'react-native-elements';
 
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
+import urls from '../../utils/urls';
 
 function MatchTimerContainer(props) {
     return (
         <View style = {styles.matchtimerContainer}>
             <View style={styles.countdownContainer}>
                 <View style = {styles.clockContainer}>
-                    <Text type="black" style={styles.clock}>47 : 16</Text>
+                    <Text type="bold" style={styles.clock}>47 : 16</Text>
                 </View>
                 <View style={styles.HMTextContainer}>
-                    <Text type="light" style={styles.HMText}>HOURS     </Text>
+                    <Text type="light" style={styles.HMText}>HOURS</Text>
                     <Text type="light" style={styles.HMText}>MINUTES</Text>
                 </View>
             </View>
             <View style={styles.seperator}>
-                <Text>|</Text>
-                <Text>|</Text>
-                <Text>|</Text>
+                <Divider style = {styles.divider} />
             </View>
             <View style={styles.matchDetails}>
                 <View>
@@ -29,7 +29,7 @@ function MatchTimerContainer(props) {
                     <Text type="bold" style={styles.venue}>QUEENSLAND TENNIS CENTER</Text>
                 </View>
                 <View style={styles.placeContainer}>
-                    <Image source={require('../../assets/Icons/location-048.png')} style={styles.locationIcon} />
+                    <Image source={urls.location} style={styles.locationIcon} />
                     <Text type="light" style={styles.place}>190 lorem ipusum location ispu sei.</Text>
                 </View>
             </View>
@@ -39,7 +39,7 @@ function MatchTimerContainer(props) {
 
 const styles = StyleSheet.create({
     clock:{
-        fontSize: 30, 
+        fontSize: 36, 
         color: colors.primary
     },
     clockContainer:{
@@ -54,9 +54,16 @@ const styles = StyleSheet.create({
       fontSize: 10,
       marginBottom:5 
     },
+    divider:{
+        backgroundColor:colors.black, 
+        height:'100%', 
+        width:0.9,
+        opacity:0.5,
+    },
     HMTextContainer:{
         flexDirection: 'row', 
         justifyContent: 'space-between',
+        alignSelf:'stretch',
         marginBottom:10 
     },
     HMText:{
@@ -93,7 +100,7 @@ const styles = StyleSheet.create({
         marginLeft: 5 
     },
     seperator:{
-        padding: 20, 
+        padding: 10, 
         marginHorizontal: 20,
     },
     venue:{

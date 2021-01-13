@@ -2,16 +2,14 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Text from '../../Config/CustomFont';
-import colors from '../../Config/colors';
+import colors from '../../Config/colors'
 
 function CovidUpdates(props) {
     return (
         <View style = {styles.covidUpdates}>
-            <View >
-                <Text type="black" style={{ fontSize: 11, color: colors.secondary }}>COVID-20 UPDATES FOR COMMUNITY</Text>
-            </View>
-            <View style = {styles.titleContainer}>
-                <Text style={{ fontSize: 8, color: colors.secondary }}>Lorsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</Text>
+            <Text type="black" style={styles.title}>COVID-19 UPDATES FOR COMMUNITY</Text>
+            <View style = {styles.subtitleContainer}>
+                <Text style={styles.subTitle}>Lorsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</Text>
             </View>
         </View>
     );
@@ -25,12 +23,19 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         paddingHorizontal: 20,
         alignSelf: 'stretch',
-        elevation: 20,
         marginHorizontal: 20,
       },
-    titleContainer:{
+    subtitleContainer:{
         paddingRight: 20
     },   
+    title:{
+        fontSize: 11, 
+        color: colors.secondary
+    },
+    subTitle:{
+        fontSize: 8, 
+        color: colors.secondary 
+    }
 })
 
 export default CovidUpdates;

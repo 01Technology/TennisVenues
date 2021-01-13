@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Dimensions,  StyleSheet } from 'react-native';
-import {Button } from 'react-native-elements';
+import { View, TextInput,  StyleSheet } from 'react-native';
 
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
@@ -48,7 +47,7 @@ export default class LoginScreen extends Component {
           buttonStyle = {styles.buttonStyle}
           titleStyle = {styles.titleStyle}
         />
-        <View style = {{marginTop:100}}>
+        <View style = {styles.signUpContanier}>
             <Text style = {styles.text} onPress = {()=>{this.forgotPassword()}}>DON'T HAVE AN ACCOUNT? <Text type="black" style = {{ color:colors.primary}} onPress = {()=>{this.Signup();}}>SIGN UP!</Text></Text>
         </View>
       </View> 
@@ -69,6 +68,9 @@ const styles = StyleSheet.create({
   },
   buttonStyle:{
     height:45, marginTop:30
+  },
+  signUpContanier:{
+    marginTop:100
   },
   textQuestion:{ 
     marginTop:15, 

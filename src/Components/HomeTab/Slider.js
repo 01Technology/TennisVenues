@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, Dimensions, Image } from 'react-native';
-
-const images = [
-  'https://images.pexels.com/photos/342361/pexels-photo-342361.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  'https://images.pexels.com/photos/1277397/pexels-photo-1277397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  'https://images.pexels.com/photos/1103833/pexels-photo-1103833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  'https://images.pexels.com/photos/2568551/pexels-photo-2568551.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-]
+import images from '../../utils/BannerAdvertisingImages';
 
 export default class Slider extends Component {
   state = {
@@ -32,11 +26,11 @@ export default class Slider extends Component {
           {
             images.map((image, index) => {
               return (
-                <View style={styles.imageContainer}>
+                <View style={styles.imageContainer} key = {index}>
                   <Image
                     key={index}
                     source={{ uri: image }}
-                    style={{ width: '100%', height: 120, }}
+                    style={styles.image}
                   />
                 </View>
               );
@@ -70,6 +64,10 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height / 6,
+  },
+  image:{
+    width: '100%', 
+    height: 120,
   },
   pagination: {
     flexDirection: 'row',

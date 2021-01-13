@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ActivityIndicator  } from 'react-native';
 import * as Font from 'expo-font';
 
+import urls from '../../utils/urls';
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -50,7 +51,7 @@ export default class FirstScreen extends Component {
       <View style={styles.container}>
         {this.state.fontLoaded ? (
           <View style = {styles.container}>
-            <Image source = {require('../../assets/logo.png')} style = {styles.img} />
+            <Image source = {urls.logo} style = {styles.img} />
             <View>
               <View style = {{marginBottom:15}} >
                 <AppButton 

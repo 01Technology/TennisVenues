@@ -3,8 +3,7 @@ import { View, StyleSheet, ScrollView, Image, FlatList, Linking, TouchableOpacit
 import { Avatar, Badge } from 'react-native-elements';
 import { Entypo } from '@expo/vector-icons';
 
-//import {useNavigation} from '@react-navigation/native';
-
+import Slider from '../../Components/HomeTab/Slider';
 import cardContent from '../../utils/cardContent.json';
 import CardItem from '../../Components/HomeTab/Card/CardItem';
 import Header from '../../Components/Header';
@@ -14,11 +13,14 @@ import CovidUpdates from '../../Components/HomeTab/CovidUpdates';
 import MatchTimerContainer from '../../Components/HomeTab/MatchTimerContainer';
 import Text from '../../Config/CustomFont';
 import colors from '../../Config/colors';
+import urls from '../../utils/urls';
 
 class Home extends Component {
-
-  state = {
-    active: 0
+  constructor(props){
+    super(props);
+    this.state = {
+      active: 0
+    }
   }
 
   searchPressed = () => {
@@ -43,9 +45,9 @@ class Home extends Component {
         <View style={styles.top}>
           <Header
             color="white"
-            search={require('../../assets/Icons/seachiconwhite.png')}
+            search={urls.whiteSearchIcon}
             searchPressed = {this.searchPressed}
-            notifications={require('../../assets/Icons/notificationactive.png')}
+            notifications={urls.notificationActive}
             notificaitonPressed  = {() => {this.props.navigation.navigate("NotificationsReminder");}}
           />
         </View>
@@ -61,15 +63,15 @@ class Home extends Component {
             <Badge
               containerStyle={styles.badgeContainer}
               backgroundColor="transparent"
-              value={<Image source={require('../../assets/Icons/PLUS-202.png')}
+              value={<Image source={urls.plusBadge}
                 onPress={() => console.log("Works!")}
                 style={styles.badge} />}
               badgeStyle={styles.badgeStyle}
             />
           </View>
           <View>
-            <Text type="bold" style={{ fontSize: 28, color: colors.white, marginLeft: 20, }}>GOOD DAY,</Text>
-            <Text type="bold" style={{ fontSize: 28, color: colors.white, marginLeft: 20, }}>USER! </Text>
+            <Text type="bold" style={styles.textGoodDayUser}>GOOD DAY,</Text>
+            <Text type="bold" style={styles.textGoodDayUser}>USER! </Text>
           </View>
         </View>
         <View>
@@ -80,6 +82,7 @@ class Home extends Component {
           <Text type="black" style={styles.nextmatchText}>YOUR NEXT MATCH IS IN</Text>
         </View>
         <MatchTimerContainer />
+        <Slider />
         <View style = {styles.popularVenueContainer}>
           <Text type = "black" style = {styles.popularVenue}>popular venues</Text>
           <Text style = {styles.seeAll}>see all</Text>
@@ -92,7 +95,8 @@ class Home extends Component {
             showsHorizontalScrollIndicator={false}
             data={cardContent}
             keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => <CardItem
+            renderItem={({ item, key }) => <CardItem
+              key = {key}
               image={{ uri: item.url }}
               title={item.title}
               subTitle={item.subTitle}
@@ -116,10 +120,12 @@ class Home extends Component {
           <Text style={{ color: colors.primary }}>FOLLOW US ON SOCIAL MEDIA</Text>
         </View>
         <View style={styles.socialIconsCotainer}>
-          <TouchableOpacity onPress={() => Linking.openURL(`https://www.facebook.com/ShawParkTennis/`)}>
-            <Entypo name="facebook-with-circle" size={32} color={colors.primary} style={{ marginRight: 10 }} />
+          <TouchableOpacity onPress={() => Linking.openURL(urls.facebook)}>
+            <Entypo name="facebook-with-circle" size={32} color={colors.primary} style={styles.socialIcon} />
           </TouchableOpacity>
-          <Entypo name="linkedin-with-circle" size={32} color={colors.primary} style={{ marginLeft: 10 }} />
+          <TouchableOpacity onPress = {() => Linking.openURL(urls.linkedin)}>
+            <Entypo name="linkedin-with-circle" size={32} color={colors.primary} style={styles.socialIcon} />
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
@@ -146,7 +152,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent', borderWidth: 0
   },
   cardContainer: {
-    marginHorizontal: 20,
+    marginHorizontal: 15,
+    
   },
   followusText:{
     marginHorizontal: 20, 
@@ -184,7 +191,8 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-between',
     marginHorizontal:20,
-    marginVertical:20
+    marginTop:'-15%',
+    marginBottom:20,
   },
   popularVenue:{
     fontSize:12,
@@ -205,8 +213,13 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     marginVertical:20
   },
-  titleStyle: {
-    fontSize: 8
+  socialIcon:{
+    marginRight: 10 
+  },
+  textGoodDayUser:{
+    fontSize: 28, 
+    color: colors.white, 
+    marginLeft: 20,
   },
   top: {
     flexDirection: 'row',

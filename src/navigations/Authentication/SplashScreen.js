@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 
 import colors from '../../Config/colors';
+import urls from '../../utils/urls';
 
 class SplashScreen extends Component {
     componentDidMount() {
@@ -12,7 +13,7 @@ class SplashScreen extends Component {
   render() {
     return (
       <View style = {styles.container}>
-        <Image source = {require('../../assets/logo.png')} style = {styles.img} />
+        <Image source = {urls.logo} style = {styles.img} />
       </View>
     );
   }

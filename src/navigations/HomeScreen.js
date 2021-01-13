@@ -1,7 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Image, View} from 'react-native';
+import {Image, View, StyleSheet} from 'react-native';
 
+import tabIcons from '../utils/urls';
 import colors from '../Config/colors';
 import { Entypo } from '@expo/vector-icons';
 
@@ -12,7 +13,7 @@ import MyBookings from './Tabs/MyBookings';
 import Plus from './Tabs/Plus';
 import Profile from './Tabs/Profile';
 import Promotions from './Tabs/Promotions';
-
+  
 export default function HomeScreen(){
   return(
     <Tabs.Navigator initialRouteName = "Home" tabBarOptions={{ activeTintColor:colors.secondary }}>
@@ -22,15 +23,15 @@ export default function HomeScreen(){
               if(focused)
                 return (
                   <Image
-                    style={{ width: 32, height: 32 }}
-                    source={require('../assets/Icons/home.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.home}
                   />
                 );
                 else{
                   return (
                   <Image
-                    style={{ width: size, height: size }}
-                    source={require('../assets/Icons/home_uncofused.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.homeUnfocused}
                   />
                 );
                 }
@@ -42,15 +43,15 @@ export default function HomeScreen(){
               if(focused)
                 return (
                   <Image
-                    style={{ width: 32, height: 32 }}
-                    source={require('../assets/Icons/mybookings_selected.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.mybookings}
                   />
                 );
                 else{
                   return (
                   <Image
-                    style={{ width: size, height: size }}
-                    source={require('../assets/Icons/mybookings.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.mybookingsUnfocused}
                   />
                 );
                 }
@@ -60,7 +61,7 @@ export default function HomeScreen(){
             tabBarLabel: "",
             tabBarIcon: ({size,focused}) => {
                 return (
-                  <View style = {{marginTop:15, justifyContent:'center', alignItems:'center'}}>
+                  <View style = {styles.plusContainer}>
                     <Entypo name="plus" size={46} color={colors.primary} />
                   </View>
                 );
@@ -72,15 +73,15 @@ export default function HomeScreen(){
               if(focused)
                 return (
                   <Image
-                    style={{ width: 32, height: 32 }}
-                    source={require('../assets/Icons/PROMOTIONS-49.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.promotions}
                   />
                 );
                 else{
                   return (
                   <Image
-                    style={{ width: size, height: size }}
-                    source={require('../assets/Icons/PROMOTIONS-50.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.promotionsUnfocused}
                   />
                 );
                 }
@@ -92,15 +93,15 @@ export default function HomeScreen(){
               if(focused)
                 return (
                   <Image
-                    style={{ width: 32, height: 32 }}
-                    source={require('../assets/Icons/NAVIGATION-342.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.profile}
                   />
                 );
                 else{
                   return (
                   <Image
-                    style={{ width: size, height: size }}
-                    source={require('../assets/Icons/profile.png')}
+                    style={styles.imageSize}
+                    source={tabIcons.profileUnfocused}
                   />
                 );
                 }
@@ -110,3 +111,15 @@ export default function HomeScreen(){
     </Tabs.Navigator>
     );
 }
+
+const styles = StyleSheet.create({
+  imageSize:{
+    width: 32, 
+    height: 32
+  },
+  plusContainer:{
+    marginTop:15, 
+    justifyContent:'center', 
+    alignItems:'center'
+  }
+})

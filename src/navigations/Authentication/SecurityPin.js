@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { View, StyleSheet } from 'react-native';
+import { Input } from 'react-native-elements';
 import AppButton from '../../Components/AppButton';
 
 import BackChevron from '../../Components/BackChevron';
@@ -23,9 +23,9 @@ export default class SecurityPin extends React.Component {
             <View style={styles.boxContainer}>
                 <BackChevron style={styles.backChevron} onPress={() => { this.backChevronPressed() }} />
                 <View>
-                    <Text style={{ alignSelf: 'center', marginBottom: 50 }}>CREATE SECURITY PIN</Text>
+                    <Text style={styles.createpinText}>CREATE SECURITY PIN</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                <View style={styles.inputFieldsContainer}>
                     <View>
                         <Input
                             maxLength = {1}
@@ -89,12 +89,21 @@ const styles = StyleSheet.create({
     buttonStyle:{
         width:160, height:45,
     },
+    createpinText:{
+        alignSelf: 'center', 
+        marginBottom: 50 
+    },
     input: {
         borderBottomColor: colors.primary,
         width: 50,
     },
     inputText:{
         textAlign:'center'
+    },
+    inputFieldsContainer:{
+        flexDirection: 'row', 
+        justifyContent: 'center', 
+        alignItems: 'center' 
     },
     titleStyle:{
         fontSize:16
