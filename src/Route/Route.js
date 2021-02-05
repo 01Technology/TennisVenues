@@ -32,8 +32,6 @@ import Feedbacks from '../navigations/Settings/Feedbacks';
 
 //Components
 import Logout from '../navigations/Settings/Logout';
-import CardSlider from '../Components/CardSlider';
-import CustomTopBarNavigator from '../Components/CustomTopBarNavigator';
 
 //alerts
 import PhoneCamera from '../navigations/Alerts/PhoneCamera';
@@ -49,9 +47,6 @@ export default function screen(){
     return(
         <NavigationContainer>
             <Stack.Navigator initialRouteName= "SplashScreen" screenOptions={{ headerShown: false}} >
-                {
-                    // authentication
-                }
                 <Stack.Screen name = "SplashScreen" component = {SplashScreen} />
                 <Stack.Screen name = "FirstScreen" component = {FirstScreen} /> 
                 <Stack.Screen name = "LoginScreen" component = {LoginScreen} /> 
@@ -61,9 +56,6 @@ export default function screen(){
                 <Stack.Screen name = "SecurityPin" component = {SecurityPin} />
                 <Stack.Screen name = "TouchAuth" component = {TouchAuth} />
                 
-                {
-                    //navigation
-                }
                 <Stack.Screen name = "HomeScreen" component = {HomeScreen} />
                 <Stack.Screen name = "BookTheCourt" component = {BookTheCourt} />
                 <Stack.Screen name = "pay" component = {pay}/>
@@ -87,9 +79,6 @@ export default function screen(){
                 <Stack.Screen name = "ThankYouForReview" component = {ThankYouForReview} />
                 <Stack.Screen name = "ThankYouForFeedbacks" component = {ThankYouForFeedbacks} />
                 <Stack.Screen name = "NotificationsReminder" component = {NotificationsReminder} />
-
-                <Stack.Screen name = "CardSlider" component = {CardSlider} />
-                <Stack.Screen name = "CustomTopBarNavigator" component = {CustomTopBarNavigator} />
             </Stack.Navigator>
         </NavigationContainer>
     );

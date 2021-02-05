@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {Ratings}from 'react-native-elements';
 
 import { Rating } from "react-native-rating-element";
 
@@ -13,6 +12,7 @@ class RatethisVenue extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        rating:0
     };
   }
 
@@ -25,17 +25,17 @@ class RatethisVenue extends Component {
       <View style = {styles.container}>
         <View style = {styles.alertBox}>
             <Text type = "black" style = {styles.textTitle}>RATE THIS VENUE</Text>
-            <View style = {{marginVertical:10}}>
+            <View style = {{marginVertical:10}}>   
                 <Rating
-                    rated={4}
+                    rated = {this.state.rating}
                     totalCount={5}
-                    size={42}
-                    onIconTap={position => console.log(`User pressed: ${position}`)}
+                    size={48}
                     direction="row"
-                    type="custom" // default is always to "icon"
+                    type="custom"
+                    onIconTap={pos => this.setState({rating:pos})}
                     selectedIconImage={require('../../assets/Icons/BALL-2-391.png')}
                     emptyIconImage={require('../../assets/Icons/BALL-531.png')}
-                />
+                    />
             </View>
             <Divider style={styles.divider}></Divider>
             <View style = {styles.lowerContainer}>

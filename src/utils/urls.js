@@ -37,6 +37,4 @@ export default{
     
     //avatar
     plusBadge: require('../assets/Icons/PLUS-202.png')
-    
-    //
 }

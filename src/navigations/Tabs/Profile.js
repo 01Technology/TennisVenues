@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import { Dimensions, TouchableOpacity } from 'react-native';
 import { View, StyleSheet, Image } from 'react-native';
 import { ButtonGroup, Avatar, Badge, Button, Divider } from 'react-native-elements';
 
@@ -10,23 +10,27 @@ import Text from '../../Config/CustomFont';
 import { Ionicons } from '@expo/vector-icons';
 import favourites from '../../utils/favourites.json';
 
-const info = {
-    'name': 'SHELDON COOPER',
-    'age': '25',
-    'gender': 'MALE',
-    'playerlevel': 'BEGINNER',
-    'handSwing': 'RIGHT HANDED',
-    'preferredCourt': 'CLAY COURT'
-}
-class CustomTopBarNavigator extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
+        
         this.state = {
             selectedButtonIndex: 0,
             username: 'USER NAME',
             location: 'AUSTRALIA',
+            //isEdit: props.route.params.isEdit ,
         };
+
         this.buttons = ["PROFILE", "", "FAVOURITES"];
+
+        this.info = {
+            name: "Sheldon Cooper",
+            age:'25',
+            gender: "Male",
+            playerlevel: 'BEGINNER',
+            handSwing: 'RIGHT HANDED',
+            preferredCourt: 'CLAY COURT'
+        }
     }
 
     buttonSelected = (index) => {
@@ -106,15 +110,15 @@ class CustomTopBarNavigator extends Component {
                             <View style={styles.profileContent}>
                                 <View style={{ height: 32 }}></View>
                                 <View style={{ width: '100%' }}>
-                                    <Text style={styles.commonText}>NAME:                <Text type="black">{info.name}</Text></Text>
-                                    <Text style={styles.commonText}>AGE:                     <Text type="black">{info.age}</Text></Text>
-                                    <Text style={styles.commonText}>GENDER:          <Text type="black">{info.gender}</Text></Text>
+                                    <Text style={styles.commonText}>NAME:                <Text type="black">{this.info.name || 'Sheldon cooper'}</Text></Text>
+                                    <Text style={styles.commonText}>AGE:                     <Text type="black">{this.info.age}</Text></Text>
+                                    <Text style={styles.commonText}>GENDER:          <Text type="black">{ this.info.gender}</Text></Text>
                                 </View>
                                 <View style={{ height: 32 }}></View>
                                 <View style={{ width: '100%' }}>
-                                    <Text style={styles.commonText}>PLAYER LEVEL:               <Text type="black">{info.playerlevel}</Text></Text>
-                                    <Text style={styles.commonText}>HAND SWING:               <Text type="black">{info.handSwing}</Text></Text>
-                                    <Text style={styles.commonText}>PREFERRED COURT:   <Text type="black">{info.preferredCourt}</Text></Text>
+                                    <Text style={styles.commonText}>PLAYER LEVEL:               <Text type="black">{this.info.playerlevel}</Text></Text>
+                                    <Text style={styles.commonText}>HAND SWING:               <Text type="black">{this.info.handSwing}</Text></Text>
+                                    <Text style={styles.commonText}>PREFERRED COURT:   <Text type="black">{this.info.preferredCourt}</Text></Text>
                                 </View>
                                 <View style={{ height: 32 }}></View>
                                 <View style={{ marginTop: 20 }}>
@@ -122,7 +126,7 @@ class CustomTopBarNavigator extends Component {
                                         containerStyle={styles.buttonContainerStyle}
                                         title="EDIT PROFILE"
                                         buttonStyle={styles.buttonStyle}
-                                        onPress={() => { this.props.navigation.navigate("EditProfile", { name: info.name, age: info.age, gender: info.gender, playerlevel: info.playerlevel, handSwing: info.handSwing, preferredCourt: info.preferredCourt }) }}
+                                        onPress={() => { this.props.navigation.navigate("EditProfile", { name: this.info.name, age: this.info.age, gender: this.info.gender, playerlevel: this.info.playerlevel, handSwing: this.info.handSwing, preferredCourt: this.info.preferredCourt }) }}
                                         titleStyle={styles.buttonTitleStyle}
                                     />
                                 </View>
@@ -183,7 +187,7 @@ class CustomTopBarNavigator extends Component {
     }
 }
 
-export default CustomTopBarNavigator;
+export default Profile;
 
 const styles = StyleSheet.create({
     avatarContainer: {

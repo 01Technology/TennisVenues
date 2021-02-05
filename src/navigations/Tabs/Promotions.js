@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, TextInput, Image, Dimensions, TouchableOpacity,ImageBackground} from 'react-native';
+import { View, StyleSheet, ScrollView, Image, Dimensions,ImageBackground} from 'react-native';
 
 import colors from '../../Config/colors';
 import Text from '../../Config/CustomFont';
 import Header from '../../Components/Header';
-
-import { Ionicons } from '@expo/vector-icons'; 
 
 export default class Plus extends Component {
 
@@ -18,6 +16,7 @@ export default class Plus extends Component {
               color="white"
               search={require('../../assets/Icons/seachiconwhite.png')}
               notifications={require('../../assets/Icons/notificationactive.png')}
+              notificaitonPressed = {()=>(this.props.navigation.navigate("NotificationsReminder"))}
             />
         </View>
         <View style = {{flexDirection:'row', justifyContent:'space-between'}}>

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, StatusBar, TouchableOpacity, Image, ScrollView } from 'react-native';
-import {Input, Icon} from 'react-native-elements';
-
-import {Picker} from '@react-native-picker/picker';
+import {Input} from 'react-native-elements';
 
 import Text from '../Config/CustomFont';
 import colors from '../Config/colors';
 import { Entypo } from '@expo/vector-icons'; 
+import AppPicker from '../Components/AppPicker';
 
 class EditProfile extends Component {
   constructor(props) {
@@ -21,13 +20,41 @@ class EditProfile extends Component {
       location: 'AUSTRALIA',
       email:'USER@NAME.COM',
       contactNo:'+61 xxxx-xxx-xx',
-
-      
     };
+
+    this.genderCategories  = [
+      { label:'Male', value:1 },
+      { label:'Female', value:2 },
+      { label:'Rather Not Say', value:3 }
+    ]
+
+    this.playerLevel = [
+      { label:'Beginner', value:1 },
+      { label:'Intermediate', value:2 },
+      { label:'Professional', value:3 }
+    ]
+
+    this.handSwing = [
+      { label:'Left', value:1 },
+      { label:'Right', value:2 },
+      { label:'All-Rounder', value:3 }
+    ]
+
+    this.preferredCourt = [
+      { label:'Clay Court', value:1 },
+      { label:'Hard Court', value:2 },
+      { label:'Grass Court', value:3 },
+      { label:'Carpet Court', value:4 },
+    ]
   }
   
   backChevronPressed = () => {
     this.props.navigation.navigate("Profile");
+  }
+
+  save = () => {
+    this.props.navigation.navigate("Profile", {isEdit:this.state.gender});
+
   }
   
   render() {
@@ -37,13 +64,13 @@ class EditProfile extends Component {
           <TouchableOpacity style = {styles.backChevronContainer} onPress = {this.backChevronPressed}>
             <Entypo name="chevron-thin-left" opacity={0.7} size={30} color={colors.primary}/>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.backChevronContainer} onPress = {this.save}>
+          <TouchableOpacity style = {styles.backChevronContainer} onPress = { () => this.save()}>
             <Text style = {styles.saveText}>SAVE</Text>
           </TouchableOpacity>
         </View>
         <View style = {styles.container}>
           <View>  
-            <Text style = {styles.topicText} type = "lite">NAME:</Text>
+            <Text>NAME:</Text>
             <Input 
               value = {this.state.name} 
               style = {styles.inputText}
@@ -51,29 +78,23 @@ class EditProfile extends Component {
                 <TouchableOpacity onPress = {()=>{this.setState({name:0})}}>
                   <Image 
                     source = {require('../assets/Icons/X-213.png')} 
-                    style = {{ width:30, height:30}}  
+                    style = {styles.icon}  
                   />
                 </TouchableOpacity>
               }
             />
           </View>
           
+          <AppPicker 
+            type = "Gender"
+            value = {this.state.gender}
+            selecteditem = {this.genderCategories}
+            onSelectItem = {item => this.setState({gender:item})}
+            items ={this.genderCategories}
+          />
+
           <View>  
-            <Text style = {styles.topicText} type = "lite">GENDER:</Text>
-            <View style = {styles.inputPicker}>
-              <Picker
-                  selectedValue={this.state.gender}
-                  style={{height: 50, width: '100%'}}
-                  onValueChange={(itemValue, itemIndex) =>
-                    this.setState({gender: itemValue})
-                  }>
-                  <Picker.Item label="MALE" value="male" />
-                  <Picker.Item label="FEMALE" value="female" />
-              </Picker>
-          </View>
-          </View>
-          <View>  
-            <Text style = {styles.topicText} type = "lite">AGE</Text>
+            <Text>AGE</Text>
             <Input 
               value = {this.state.age} 
               style = {styles.inputText}
@@ -82,14 +103,14 @@ class EditProfile extends Component {
                 <TouchableOpacity onPress = {()=>{this.setState({age:0})}}>
                   <Image 
                     source = {require('../assets/Icons/X-213.png')} 
-                    style = {{ width:30, height:30}}  
+                    style = {styles.icon}  
                   />
                 </TouchableOpacity>
               }
             />
           </View>
           <View>  
-            <Text style = {styles.topicText} type = "lite">LOCATION</Text>
+            <Text  >LOCATION</Text>
             <Input 
               value = {this.state.location} 
               style = {styles.inputText}
@@ -97,7 +118,7 @@ class EditProfile extends Component {
                 <TouchableOpacity onPress = {()=>{this.setState({location:0})}}>
                   <Image 
                     source = {require('../assets/Icons/X-213.png')} 
-                    style = {{ width:30, height:30}}  
+                    style = {styles.icon}  
                   />
                 </TouchableOpacity>
               }
@@ -106,7 +127,7 @@ class EditProfile extends Component {
           <View style = {{height:60}} />
           
           <View>  
-            <Text style = {styles.topicText} type = "lite">EMAIL ADDRESS</Text>
+            <Text>EMAIL ADDRESS</Text>
             <Input 
               value = {this.state.email} 
               style = {styles.inputText}
@@ -114,14 +135,14 @@ class EditProfile extends Component {
                 <TouchableOpacity onPress = {()=>{this.setState({email:0})}}>
                   <Image 
                     source = {require('../assets/Icons/X-213.png')} 
-                    style = {{ width:30, height:30}}  
+                    style = {styles.icon}  
                   />
                 </TouchableOpacity>
               }
             />
           </View>
           <View>  
-            <Text style = {styles.topicText} type = "lite">CONTACT NUMBER:</Text>
+            <Text>CONTACT NUMBER:</Text>
             <Input 
               value = {this.state.contactNo} 
               style = {styles.inputText}
@@ -129,60 +150,40 @@ class EditProfile extends Component {
                 <TouchableOpacity onPress = {()=>{this.setState({contactNo:0})}}>
                   <Image 
                     source = {require('../assets/Icons/X-213.png')} 
-                    style = {{ width:30, height:30}}  
+                    style = {styles.icon}  
                   />
                 </TouchableOpacity>
               }
             />
           </View>
           <View style = {{height:60}} />
-          <View>  
-            <Text style = {styles.topicText} type = "lite">PLAYER LEVEL:</Text>
-            <View style = {styles.inputPicker}>
-              <Picker
-                  selectedValue={this.state.playerLevel}
-                  style={{height: 50, width: '100%'}}
-                  onValueChange={(itemValue, itemIndex) =>
-                    this.setState({playerLevel: itemValue})
-                  }>
-                  <Picker.Item label="BEGINNER" value="beginner" />
-                  <Picker.Item label="INTERMEDIATE" value="intermediate" />
-                  <Picker.Item label="PROFESSIONAL" value="professional" />
-              </Picker>
-            </View>
-          </View>
-          <View>  
-            <Text style = {styles.topicText} type = "lite">HAND SWING:</Text>
-            <View style = {styles.inputPicker}>
-              <Picker
-                  selectedValue={this.state.handSwing}
-                  style={{height: 50, width: '100%'}}
-                  onValueChange={(val, itemIndex) =>
-                    this.setState({handSwing: val})
-                  }>
-                  <Picker.Item label="LEFT" value="left" />
-                  <Picker.Item label="RIGHT" value="right" />
-                  <Picker.Item label="ALL-ROUNDER" value="allrounder" />
-              </Picker>
-            </View>
-          </View>
-          <View style = {{height:20}} />
-          <View>  
-            <Text style = {styles.topicText} type = "lite">PREFERRED COURT:</Text>
-            <View style = {styles.inputPicker}>
-              <Picker
-                  selectedValue={this.state.preferredCourt}
-                  style={{height: 50, width: '100%'}}
-                  onValueChange={(val, itemIndex) =>
-                    this.setState({preferredCourt: val})
-                  }>
-                  <Picker.Item label="CLAY COURT" value="claycourt" />
-                  <Picker.Item label="HARD COURT" value="hardcourt" />
-                  <Picker.Item label="GRASS COURT" value="grasscourt" />
-                  <Picker.Item label="CARPET COURT" value="carpetcourt" />
-              </Picker>
-            </View>
-          </View>
+          <AppPicker 
+            type = "Player Level"
+            value = {this.state.playerLevel}
+            selecteditem = {this.playerLevel}
+            onSelectItem = {item => this.setState({playerLevel:item})}
+            items ={this.playerLevel}
+          />
+
+          <AppPicker 
+            type = "Hand Swing"
+            value = {this.state.handSwing}
+            selecteditem = {this.handSwing}
+            onSelectItem = {item => this.setState({handSwing:item})}
+            items ={this.handSwing}
+          />
+          
+          
+          <View style = {{height:40}} />
+
+          <AppPicker 
+            type = "Preferred court"
+            value = {this.state.preferredCourt}
+            selecteditem = {this.preferredCourt}
+            onSelectItem = {item => this.setState({preferredCourt:item})}
+            items ={this.preferredCourt}
+          />
+
           <View style = {{height:20}} />
         </View>
       </ScrollView>
@@ -200,9 +201,15 @@ const styles = StyleSheet.create({
     marginHorizontal:20
   },
   inputText:{
+    paddingLeft:15,
     fontSize:17,
     fontFamily:'Lato-Black'
   }, 
+  icon:{
+    width:30, 
+    height:30,
+    marginRight:15
+  },
   saveText:{
     fontSize:20,
     color:colors.primary
@@ -214,9 +221,6 @@ const styles = StyleSheet.create({
     flexDirection:'row',    
     alignItems:'center',
     marginBottom:30
-  },
-  topicText:{
-    
   },
   textInput: {
     borderRadius:4, 

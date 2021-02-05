@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, Dimensions, TouchableOpacity, FlatList, ScrollView, } from 'react-native';
+import { View, StyleSheet, Dimensions, TouchableOpacity, FlatList, ScrollView} from 'react-native';
 
 import Text from '../../Config/CustomFont';
 import colors from '../../Config/colors';
@@ -63,10 +63,10 @@ export default class MyBookings extends Component {
               <Text style={{ fontSize: 11 }}>{item.email}</Text>
             </View>
           </View>
+          <View style = {{justifyContent:'center', alignItems:'center'}}>
+            <Entypo name="chevron-thin-right" size={36} color="gray" style={{ width: 65, height: 65,  }} />
+          </View>
         </View>
-        <TouchableOpacity onPress={() => { this.openStudentCreateScreen(); }} activeOpacity={0.7} style={{ width: 65, height: 65, alignItems: "center", justifyContent: "center", }}>
-          <Entypo name="chevron-thin-right" size={36} color="gray" />
-        </TouchableOpacity>
       </TouchableOpacity>
     )
   }
@@ -78,13 +78,13 @@ export default class MyBookings extends Component {
           <Text style={styles.nov}>NOV</Text>
           <Text style={styles.day}>{item.id}</Text>
         </View>
-        <View style={{ justifyContent: 'flex-start', flexWrap: 'wrap', alignItems: 'center' }}>
+        <View style={{ justifyContent: 'flex-start', flexWrap: 'wrap',alignItems: 'center' }}>
           <View style={{ width: '99%' }}>
             <Text type="bold" style={styles.calanderContainer}>{item.name}</Text>
           </View>
           <View style={{ flexDirection: 'row', width: '80%', justifyContent: 'flex-start', alignSelf: 'flex-start' }}>
             <Ionicons name="location" size={16} color={colors.secondary} />
-            <Text style={{ marginRight: 4, }}>{item.email}</Text>
+            <Text style={{ marginRight: 3,}}>{item.email}</Text>
             <AppButton
               title="details"
               buttonStyle={{ width: 50, height: 20 }}
@@ -167,7 +167,8 @@ const styles = StyleSheet.create({
   },
   dates: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginRight:3
   },
   day: {
     fontSize: 50,
@@ -219,9 +220,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     elevation: 20,
     justifyContent: 'space-between',
-    marginRight: 10,
+    marginRight: 20  ,
     marginVertical: 10,
-    width: Dimensions.get('window').width - Dimensions.get('window').width / 5
+    width: Dimensions.get('window').width - Dimensions.get('window').width / 7
   },
   previousbookingsText: {
     color: colors.black,
@@ -234,4 +235,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: 15,
   },
+  upcomingDataContainer:{
+    height:Dimensions.get('window').height/2
+  }
 })
