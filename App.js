@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import Route from './Route/Route';
+import React from 'react';
+import Route from './src/Route/Route';
+import AppPicker from './src/Components/AppPicker';
 
-export default class App extends Component {
-  render() {
-    return (
-       <Route />
-    );
-  }
+function App(props) {
+  return (
+    <Route />
+  );
 }
+
+export default App;
